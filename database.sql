@@ -8,3 +8,10 @@ CREATE TABLE "user" (
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
+
+CREATE TABLE "track" (
+    "id" SERIAL PRIMARY KEY,
+    "name" VARCHAR (80) UNIQUE NOT NULL,
+    "bpm" INT NOT NULL,
+    "beats" INT NOT NULL
+);

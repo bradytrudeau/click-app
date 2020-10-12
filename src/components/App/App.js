@@ -20,6 +20,8 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Metronome from '../Metronome/Metronome';
+import SongForm from '../SongForm/SongForm';
+
 
 
 import './App.css';
@@ -46,10 +48,16 @@ class App extends Component {
               component={AboutPage}
             />
             <Route
-              // shows AboutPage at all times (logged in or not)
+              // shows Metronome at all times (logged in or not)
               exact
               path="/metronome"
               component={Metronome}
+            />
+            <Route
+              // shows Metronome at all times (logged in or not)
+              exact
+              path="/songform"
+              component={SongForm}
             />
 
             {/* For protected routes, the view could show one of several things on the same route.

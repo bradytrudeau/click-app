@@ -42,9 +42,14 @@ class SongForm extends Component {
     }
 
     handleCancel = () => {
-        this.props.history.push('/');
-    }
-
+        this.setState({
+            newTrack: {
+                name: '',
+                bpm: '',
+                beats: '',
+                }
+            });    
+        }
     render() {
         return (
             <div>

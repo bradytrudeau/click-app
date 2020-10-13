@@ -6,7 +6,7 @@ body,
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0px;
+  margin: auto;
 }
 
 img {
@@ -109,4 +109,9 @@ Form Treatment
 input {
   margin: 5px;
   margin-bottom: 10px;
+}
+
+.newSongForm {
+  width: 400px;
+  margin: auto;
 }

@@ -9,6 +9,10 @@ body {
   margin: auto;
 }
 
+h2 {
+  text-align: center;
+}
+
 img {
   display: inline-block;
   max-width: 100%;
@@ -116,6 +120,16 @@ input {
   margin: auto;
 }
 
+.addTrackBtn {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.cancelTrackBtn {
+  margin: 5px;
+  text-align: center;
+}
+
 /* --------------------------------------------------------------------------------
 Table
 -------------------------------------------------------------------------------- */
@@ -139,4 +153,13 @@ td {
   border: 1px solid black;
   padding: 5px 5px 5px 5px;
   text-align: center;
+}
+
+/* --------------------------------------------------------------------------------
+Metronome
+-------------------------------------------------------------------------------- */
+
+.metronome {
+  width: 200px;
+  margin: auto;
 }

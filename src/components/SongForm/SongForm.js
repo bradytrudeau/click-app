@@ -51,6 +51,7 @@ class SongForm extends Component {
                 }
             });    
         }
+
     render() {
         return (
             <div>
@@ -93,11 +94,13 @@ class SongForm extends Component {
                                     <MenuItem value="13">13/4</MenuItem>
                                 </Select>
                         </FormControl>
-                    <div className="buttonArea">
+                    <div className="addTrackBtn">
                         <Button variant='contained' type="submit" color='primary'>Add a New Track</Button>
                     </div>
+                    <div className="cancelTrackBtn">
+                        <Button variant='contained' onClick={this.handleCancel} color='primary'>Cancel</Button>
+                    </div>
                 </form>
-                <Button variant='contained' onClick={this.handleCancel} color='primary'>Cancel</Button>
             </div>
         );
     }

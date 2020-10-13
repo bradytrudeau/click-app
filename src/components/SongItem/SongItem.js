@@ -8,27 +8,8 @@ import audioTrack from '../../Audio/FineMetronome.wav';
 class SongItem extends Component {
     state = {
         playing: false,
-        bpm: 0,
+        bpm: this.props.song.bpm,
         track: new Audio(audioTrack),
-        time: null
-    }
-
-
-    // Get number set in input for the bpm value
-    handleBPMChange = (propertyName) => (event) => {
-
-        if (this.state.playing === true) {
-            clearInterval(this.timer);
-            this.timer = setInterval(this.playTrack, (60 / event.target.value) * 1000);
-            this.setState({
-                [propertyName]: event.target.value
-            })
-        }
-            else {
-            this.setState({
-                [propertyName]: event.target.value
-            })
-        }
     }
 
     handleStartStop = () => {
@@ -47,32 +28,13 @@ class SongItem extends Component {
                 playing: !this.state.playing
             }, this.playTrack);
             console.log('Starting track');
+            console.log('STATE', this.state);
         }
        }
     
     // Plays imported sound file
     playTrack = () => {
             this.state.track.play();    
-    }
-
-    // Take system time of the first click and set it to the state
-    // Take system time of the second click and subtract the time
-    // of the first click to get the difference
-    // Set state to reflect the bpm of that time difference
-    tapTempo = () => {
-        if (this.state.time === null) {
-            this.setState({
-                time: Date.now()
-            })
-        }
-        else {
-            let secondClick = Date.now();
-            let timeDifference = secondClick - this.state.time;
-            this.setState({
-                bpm: Math.ceil((60 / timeDifference) * 1000),
-                time: null
-            });
-        }
     }
 
   render() {
@@ -92,7 +54,10 @@ class SongItem extends Component {
                 <button>Edit</button>
             </td>
             <td>
-                <button>Play</button>
+                <button
+                    onClick={this.handleStartStop}>
+                    {this.state.playing ? 'Stop' : 'Start'}
+                </button>
             </td>                            
     </tr>
     )

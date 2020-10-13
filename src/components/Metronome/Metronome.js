@@ -4,6 +4,10 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import './Metronome.css';
 // import audioTrack from '../../Audio/Fineshrine.m4a';
 import audioTrack from '../../Audio/FineMetronome.wav';
+import audioTrack2 from '../../Audio/MegaClap.wav';
+import { TextField, Select, FormControl, InputLabel, MenuItem } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+
 
 
 
@@ -13,7 +17,10 @@ class Metronome extends Component {
         playing: false,
         bpm: 0,
         track: new Audio(audioTrack),
-        time: null
+        track2: new Audio(audioTrack2),
+        time: null,
+        beats: 0,
+        count: 0
     }
 
 
@@ -50,12 +57,29 @@ class Metronome extends Component {
                 playing: !this.state.playing
             }, this.playTrack);
             console.log('Starting track');
+            console.log('STATE', this.state);
+            
         }
        }
     
     // Plays imported sound file
+    // On the first count of every measure, play a
+    // different sound file to indicate start of measure
     playTrack = () => {
-            this.state.track.play();    
+        this.state.count++;
+        console.log('COUNT', this.state.count);
+        if (this.state.count === 1) {
+            this.state.track2.play();
+        }
+        else if (this.state.count === this.state.beats + 1) {
+            this.setState({
+                count: 1
+            })
+            this.state.track2.play();
+        }
+        else{
+            this.state.track.play();
+        }    
     }
 
     // Take system time of the first click and set it to the state
@@ -82,7 +106,8 @@ class Metronome extends Component {
       
     return (
       <div className="metronome">
-          <div className="inputs">
+          <h2>Metronome</h2>
+          {/* <div className="inputs">
               <div>{this.state.bpm} BPM</div>
               <input
                 type="number"
@@ -100,7 +125,48 @@ class Metronome extends Component {
           <button
             onClick={this.tapTempo}>
               Tap Tempo
-          </button>
+          </button> */}
+                    <TextField 
+                        label='BPM'
+                        type='number'
+                        value={this.state.bpm}
+                        fullWidth='true'    
+                        onChange={this.handleBPMChange('bpm')} 
+                    />
+                        <FormControl id="dropdown" fullWidth>
+                                <InputLabel id="beatSelectLabel">Time Signature</InputLabel>
+                                <Select
+                                    labelId="beatSelectLabel"
+                                    id="demo-simple-select"
+                                    onChange={this.handleBPMChange('beats')}
+                                >
+                                    <MenuItem value={1}>1/4</MenuItem>
+                                    <MenuItem value={2}>2/4</MenuItem>
+                                    <MenuItem value={3}>3/4</MenuItem>
+                                    <MenuItem value={4}>4/4</MenuItem>
+                                    <MenuItem value={5}>5/4</MenuItem>
+                                    <MenuItem value={61}>6/4</MenuItem>
+                                    <MenuItem value={7}>7/4</MenuItem>
+                                    <MenuItem value={8}>8/4</MenuItem>
+                                    <MenuItem value={9}>9/4</MenuItem>
+                                    <MenuItem value={10}>10/4</MenuItem>
+                                    <MenuItem value={11}>11/4</MenuItem>
+                                    <MenuItem value={12}>12/4</MenuItem>
+                                    <MenuItem value={13}>13/4</MenuItem>
+                                </Select>
+                        </FormControl>
+                    <div className="addTrackBtn">
+                        <Button 
+                            variant='contained' 
+                            type="submit" 
+                            color='primary'
+                            onClick={this.handleStartStop}>
+                            {this.state.playing ? 'Stop' : 'Start'}
+                        </Button>
+                    </div>
+                    <div className="cancelTrackBtn">
+                        <Button variant='contained' onClick={this.tapTempo} color='primary'>Tap Tempo</Button>
+                    </div>
       </div>
     )
   }

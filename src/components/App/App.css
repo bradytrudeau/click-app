@@ -115,3 +115,28 @@ input {
   width: 400px;
   margin: auto;
 }
+
+/* --------------------------------------------------------------------------------
+Table
+-------------------------------------------------------------------------------- */
+
+table {
+  text-align: left;
+  width: 80%;
+  margin: auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th{
+  border: 1px solid black;
+  padding: 10px 10px 10px 10px;
+  background-color: rgb(139, 142, 146);
+  text-align: center;
+}
+
+td {
+  border: 1px solid black;
+  padding: 5px 5px 5px 5px;
+  text-align: center;
+}

@@ -21,6 +21,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Metronome from '../Metronome/Metronome';
 import SongForm from '../SongForm/SongForm';
+import SongLibrary from '../SongLibrary/SongLibrary';
+
 
 
 
@@ -47,23 +49,28 @@ class App extends Component {
               path="/about"
               component={AboutPage}
             />
-            <Route
+
+            <ProtectedRoute
               // shows Metronome at all times (logged in or not)
               exact
               path="/metronome"
               component={Metronome}
             />
-            <Route
+
+            <ProtectedRoute
+              // shows Metronome at all times (logged in or not)
+              exact
+              path="/songlibrary"
+              component={SongLibrary}
+            />
+
+            <ProtectedRoute
               // shows Metronome at all times (logged in or not)
               exact
               path="/songform"
               component={SongForm}
             />
 
-            {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:3000/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:3000/user */}
             <ProtectedRoute
               // logged in shows UserPage else shows LoginPage
               exact

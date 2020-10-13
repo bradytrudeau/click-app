@@ -4,11 +4,21 @@ const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 
-/**
- * GET route template
- */
-router.get('/', (req, res) => {
-  // GET route code here
+// GET route to return the users songs
+router.get('/', rejectUnauthenticated, (req, res) => {
+    console.log('/songs GET route');
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('user', req.user);
+    const queryText = `SELECT * FROM "track" WHERE "user_id" = $1;`; 
+    const queryParams = [req.user.id];
+    pool.query(queryText, queryParams)
+        .then((result) => {
+        res.send(result.rows);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.sendStatus(500);
+        });
 });
 
 

@@ -19,8 +19,23 @@ function* addSong(action) {
   })
 }
 
+function* fetchSongs(action) {
+    console.log('fetchSongs Action:', action);
+    let response = yield axios({
+      method: 'GET',
+      url: '/songs'
+    });  
+    console.log('List of Songs:', response.data);
+    yield put({
+      type: 'SET_SONGS',
+      payload: response.data
+    });
+  }
+
 function* songSaga() {
   yield takeLatest('ADD_SONG', addSong);
+  yield takeLatest('FETCH_SONGS', fetchSongs);
+
 }
 
 export default songSaga;

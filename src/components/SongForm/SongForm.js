@@ -30,7 +30,7 @@ class SongForm extends Component {
     addNewTrack = (event) => {
         event.preventDefault();
         this.props.dispatch({ 
-            type: 'ADD_TRACK', 
+            type: 'ADD_SONG', 
             payload: this.state.newTrack })
         this.setState({
             newTrack: {

@@ -62,14 +62,14 @@ class SongForm extends Component {
                         label='Track Name'
                         type='text'
                         value={this.state.newTrack.name}  
-                        fullWidth='true'  
+                        fullWidth={true}  
                         onChange={(event) => this.handleChangeFor('name', event)} 
                     />
                     <TextField 
                         label='BPM'
                         type='number'
                         value={this.state.newTrack.bpm}
-                        fullWidth='true'    
+                        fullWidth={true}    
                         onChange={(event) => this.handleChangeFor('bpm', event)} 
                     />
                         <FormControl id="dropdown" fullWidth>
@@ -79,19 +79,19 @@ class SongForm extends Component {
                                     id="demo-simple-select"
                                     onChange={(event) => this.handleChangeFor('beats', event)}
                                 >
-                                    <MenuItem value="1">1/4</MenuItem>
-                                    <MenuItem value="2">2/4</MenuItem>
-                                    <MenuItem value="3">3/4</MenuItem>
-                                    <MenuItem value="4">4/4</MenuItem>
-                                    <MenuItem value="5">5/4</MenuItem>
-                                    <MenuItem value="6">6/4</MenuItem>
-                                    <MenuItem value="7">7/4</MenuItem>
-                                    <MenuItem value="8">8/4</MenuItem>
-                                    <MenuItem value="9">9/4</MenuItem>
-                                    <MenuItem value="10">10/4</MenuItem>
-                                    <MenuItem value="11">11/4</MenuItem>
-                                    <MenuItem value="12">12/4</MenuItem>
-                                    <MenuItem value="13">13/4</MenuItem>
+                                    <MenuItem value={1}>1/4</MenuItem>
+                                    <MenuItem value={2}>2/4</MenuItem>
+                                    <MenuItem value={3}>3/4</MenuItem>
+                                    <MenuItem value={4}>4/4</MenuItem>
+                                    <MenuItem value={5}>5/4</MenuItem>
+                                    <MenuItem value={6}>6/4</MenuItem>
+                                    <MenuItem value={7}>7/4</MenuItem>
+                                    <MenuItem value={8}>8/4</MenuItem>
+                                    <MenuItem value={9}>9/4</MenuItem>
+                                    <MenuItem value={10}>10/4</MenuItem>
+                                    <MenuItem value={11}>11/4</MenuItem>
+                                    <MenuItem value={12}>12/4</MenuItem>
+                                    <MenuItem value={13}>13/4</MenuItem>
                                 </Select>
                         </FormControl>
                     <div className="addTrackBtn">

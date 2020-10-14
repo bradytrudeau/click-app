@@ -44,7 +44,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 // DELETE route for removing a track from a users profile
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('Delete song with id of', req.params.id);
     const queryString = 'DELETE FROM "track" WHERE "id" = $1;'
     pool.query(queryString, [req.params.id])
@@ -57,5 +57,21 @@ router.delete('/:id', (req, res) => {
             res.sendStatus(500);
         })
   });
+
+// PUT route for editing track info in users profile
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('EDITING song with id of', req.body.id);
+    const queryString = 'UPDATE "track" SET ("name", "bpm", "beats") = ($1, $2, $3) WHERE "id" = $4;'
+    pool.query(queryString, [req.body.name, req.body.bpm, req.body.beats, req.body.id])
+        .then(response => {
+            console.log("Updated!");
+            res.sendStatus(200);
+        })
+        .catch(err => {
+            console.log("Error in PUT", err);
+            res.sendStatus(500);
+        })
+  });
+
 
 module.exports = router;

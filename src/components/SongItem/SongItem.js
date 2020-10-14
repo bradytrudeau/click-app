@@ -5,14 +5,12 @@ import audioTrack from '../../Audio/FineMetronome.wav';
 import audioTrack2 from '../../Audio/MegaClap.wav';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
-
-
-
-
 class SongItem extends Component {
     state = {
         playing: false,
+        name: this.props.song.name,
         bpm: this.props.song.bpm,
+        id: this.props.song.id,
         track: new Audio(audioTrack),
         track2: new Audio(audioTrack2),
         beats: this.props.song.beats,

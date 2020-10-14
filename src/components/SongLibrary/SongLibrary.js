@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import SongItem from '../SongItem/SongItem';
 import EditSongItem from '../EditSongItem/EditSongItem';
+import { makeStyles } from '@material-ui/core/styles';
+import { TextField, Select, FormControl, InputLabel, MenuItem, Modal } from '@material-ui/core';
 import './SongLibrary.css';
-
-
 
 
 class SongLibrary extends Component {
@@ -51,7 +51,15 @@ class SongLibrary extends Component {
                 )}
             </tbody>
         </table>
-        {this.state.visible ? <EditSongItem /> : null}
+        {/* {this.state.visible ? <EditSongItem toggle={this.togglePopUp}/> : null} */}
+        <Modal
+          open={this.state.visible}
+          onClose={this.togglePopUp}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          <EditSongItem toggle={this.togglePopUp}/>
+        </Modal>
       </div>
     )
   }

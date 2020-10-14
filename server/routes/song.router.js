@@ -43,4 +43,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         });
 });
 
+// DELETE route for removing a track from a users profile
+
+
 module.exports = router;

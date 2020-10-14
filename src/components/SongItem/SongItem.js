@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import audioTrack from '../../Audio/FineMetronome.wav';
+import audioTrack2 from '../../Audio/MegaClap.wav';
+
 
 
 
@@ -10,6 +12,9 @@ class SongItem extends Component {
         playing: false,
         bpm: this.props.song.bpm,
         track: new Audio(audioTrack),
+        track2: new Audio(audioTrack2),
+        beats: this.props.song.beats,
+        count: 0,
     }
 
     handleStartStop = () => {
@@ -34,32 +39,62 @@ class SongItem extends Component {
     
     // Plays imported sound file
     playTrack = () => {
-            this.state.track.play();    
+        this.state.count++;
+        console.log('COUNT', this.state.count);
+        if (this.state.count === 1) {
+            this.state.track2.play();
+        }
+        else if (this.state.count === this.state.beats + 1) {
+            this.setState({
+                count: 1
+            })
+            this.state.track2.play();
+        }
+        else{
+            this.state.track.play();
+        }     
     }
+
+    // Delete song
+    deleteSong = () => {
+        this.props.dispatch({
+            type: 'DELETE_SONG'
+          });
+    }
+
 
   render() {
       
     return (
-        <tr>
-            <td>
-                {this.props.song.name}
-            </td>
-            <td>
-                {this.props.song.bpm}
-            </td>
-            <td>
-                {this.props.song.beats}  
-            </td>
-            <td>
-                <button>Edit</button>
-            </td>
-            <td>
-                <button
-                    onClick={this.handleStartStop}>
-                    {this.state.playing ? 'Stop' : 'Start'}
-                </button>
-            </td>                            
-    </tr>
+            <tr>
+                <td>
+                    {this.props.song.name}
+                </td>
+                <td>
+                    {this.props.song.bpm}
+                </td>
+                <td>
+                    {this.props.song.beats}/4 
+                </td>
+                <td>
+                    <button
+                        onClick={this.togglePopUp}>
+                            Edit
+                    </button>
+                </td>
+                <td>
+                    <button
+                        onClick={this.deleteSong}>
+                            Edit
+                    </button>
+                </td>
+                <td>
+                    <button
+                        onClick={this.handleStartStop}>
+                        {this.state.playing ? 'Stop' : 'Start'}
+                    </button>
+                </td>                            
+            </tr>
     )
   }
 }

@@ -5,12 +5,21 @@ import SongItem from '../SongItem/SongItem';
 
 
 class SongLibrary extends Component {
+    state = {
+        visible: false
+    };
 
     componentDidMount() {
         this.props.dispatch({
           type: 'FETCH_SONGS'
         });
-      }
+    }
+
+    togglePopUp = () => {
+        this.setState({
+         visible: !this.state.visible
+        });
+    };
 
   render() {
       
@@ -20,22 +29,24 @@ class SongLibrary extends Component {
         <table>
             <thead>
                 <tr>
-                <th>Track Name</th>
-                <th>BPM</th>
-                <th>Beats Per Measure</th>
-                <th>Edit Track</th>
-                <th>Play Track</th>
+                    <th>Track Name</th>
+                    <th>BPM</th>
+                    <th>Time Signature</th>
+                    <th>Edit Track</th>
+                    <th>Play Track</th>
+                    <th>Delete Track</th>
                 </tr>
             </thead>
             <tbody>
                 {this.props.store.songs.map((song, i) => 
                     <SongItem
-                    key={song.id}
-                    song={song}
+                        key={song.id}
+                        song={song}
                     />
                 )}
             </tbody>
-        </table> 
+        </table>
+        {/* {this.state.visible ? <PopUp toggle={this.togglePopUp} /> : null} */}
       </div>
     )
   }

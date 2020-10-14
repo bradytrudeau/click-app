@@ -58,7 +58,8 @@ class SongItem extends Component {
     // Delete song
     deleteSong = () => {
         this.props.dispatch({
-            type: 'DELETE_SONG'
+            type: 'DELETE_SONG',
+            payload: this.props.song.id
           });
     }
 
@@ -85,7 +86,7 @@ class SongItem extends Component {
                 <td>
                     <button
                         onClick={this.deleteSong}>
-                            Edit
+                            Delete
                     </button>
                 </td>
                 <td>

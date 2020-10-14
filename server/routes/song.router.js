@@ -44,6 +44,18 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 // DELETE route for removing a track from a users profile
-
+router.delete('/:id', (req, res) => {
+    console.log('Delete song with id of', req.params.id);
+    const queryString = 'DELETE FROM "track" WHERE "id" = $1;'
+    pool.query(queryString, [req.params.id])
+        .then(response => {
+            console.log("Deleted!");
+            res.sendStatus(200);
+        })
+        .catch(err => {
+            console.log("Error in DELETE", err);
+            res.sendStatus(500);
+        })
+  });
 
 module.exports = router;

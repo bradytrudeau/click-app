@@ -34,7 +34,7 @@ function* deleteSong(action) {
     console.log('deleteSong Action:', action);
 
     let response = yield axios({
-        method: 'POST',
+        method: 'DELETE',
         url: `/songs/${action.payload}`,
         data: action.payload
     });

@@ -33,8 +33,8 @@ class SongLibrary extends Component {
                     <th>BPM</th>
                     <th>Time Signature</th>
                     <th>Edit Track</th>
-                    <th>Play Track</th>
                     <th>Delete Track</th>
+                    <th>Play Track</th>
                 </tr>
             </thead>
             <tbody>

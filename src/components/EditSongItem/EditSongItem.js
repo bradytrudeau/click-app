@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { TextField, Select, FormControl, InputLabel, MenuItem, Modal } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import './EditSongItem.css';
+
 
 
 class EditSongItem extends Component {

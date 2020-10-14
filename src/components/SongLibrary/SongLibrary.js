@@ -4,8 +4,15 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import SongItem from '../SongItem/SongItem';
 import EditSongItem from '../EditSongItem/EditSongItem';
 import { makeStyles } from '@material-ui/core/styles';
-import { TextField, Select, FormControl, InputLabel, MenuItem, Modal } from '@material-ui/core';
+import { Modal } from '@material-ui/core';
 import './SongLibrary.css';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 
 class SongLibrary extends Component {
@@ -52,14 +59,41 @@ class SongLibrary extends Component {
             </tbody>
         </table>
         {/* {this.state.visible ? <EditSongItem toggle={this.togglePopUp}/> : null} */}
-        <Modal
+        {/* <Modal
           open={this.state.visible}
           onClose={this.togglePopUp}
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
+          backdropComponent="SimpleBackdrop"
         >
           <EditSongItem toggle={this.togglePopUp}/>
-        </Modal>
+        </Modal> */}
+        <Dialog open={this.state.visible} onClose={this.togglePopUp} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Edit Track</DialogTitle>
+        <DialogContent>
+          {/* <DialogContentText>
+            To subscribe to this website, please enter your email address here. We will send updates
+            occasionally.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Email Address"
+            type="email"
+            fullWidth
+          /> */}
+          <EditSongItem toggle={this.togglePopUp}/>
+        </DialogContent>
+        {/* <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Subscribe
+          </Button>
+        </DialogActions> */}
+      </Dialog>
       </div>
     )
   }

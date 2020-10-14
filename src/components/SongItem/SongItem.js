@@ -4,6 +4,13 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import audioTrack from '../../Audio/FineMetronome.wav';
 import audioTrack2 from '../../Audio/MegaClap.wav';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
 
 class SongItem extends Component {
     state = {
@@ -15,6 +22,7 @@ class SongItem extends Component {
         track2: new Audio(audioTrack2),
         beats: this.props.song.beats,
         count: 0,
+        deleting: false
     }
 
     handleStartStop = () => {
@@ -60,7 +68,10 @@ class SongItem extends Component {
         this.props.dispatch({
             type: 'DELETE_SONG',
             payload: this.props.song.id
-          });
+        });
+        this.setState({
+            deleting: false
+        })
     }
 
     handleClick = () => {
@@ -69,6 +80,18 @@ class SongItem extends Component {
             payload: this.state
         });
         this.props.toggle();
+    };
+
+    openDelete = () => {
+        this.setState({
+            deleting: true
+        })
+    };
+
+    handleClose = () => {
+        this.setState({
+            deleting: false
+        })
     };
 
 
@@ -86,21 +109,40 @@ class SongItem extends Component {
                     {this.props.song.beats}/4 
                 </td>
                 <td>
-                    <button onClick={this.handleClick}>
-                        Edit
-                    </button>
+                    <Button onClick={this.handleClick} variant="contained" color="primary">
+                            Edit
+                    </Button>
                 </td>
                 <td>
-                    <button
-                        onClick={this.deleteSong}>
+                    <Button onClick={this.openDelete} variant="contained" color="primary">
                             Delete
-                    </button>
+                    </Button>
+                    <Dialog
+                        open={this.state.deleting}
+                        onClose={this.handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                        >
+                        <DialogTitle id="alert-dialog-title">{"DELETE SONG?"}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                            Are you sure you want to DELETE this track?
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleClose} variant="contained" color="primary">
+                                No
+                            </Button>
+                            <Button onClick={this.deleteSong} variant="contained" color="primary">
+                                Yes
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
                 </td>
                 <td>
-                    <button
-                        onClick={this.handleStartStop}>
-                        {this.state.playing ? 'Stop' : 'Start'}
-                    </button>
+                    <Button onClick={this.handleStartStop} variant="contained" color="primary">
+                        {this.state.playing ? 'Stop' : 'Start'} 
+                    </Button>
                 </td>
             </tr>
     )

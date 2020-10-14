@@ -22,6 +22,8 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Metronome from '../Metronome/Metronome';
 import SongForm from '../SongForm/SongForm';
 import SongLibrary from '../SongLibrary/SongLibrary';
+import EditSongItem from '../EditSongItem/EditSongItem';
+
 
 
 
@@ -55,6 +57,13 @@ class App extends Component {
               exact
               path="/metronome"
               component={Metronome}
+            />
+
+            <ProtectedRoute
+              // shows Metronome at all times (logged in or not)
+              exact
+              path="/edit"
+              component={EditSongItem}
             />
 
             <ProtectedRoute

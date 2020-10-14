@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import SongItem from '../SongItem/SongItem';
+import EditSongItem from '../EditSongItem/EditSongItem';
+import './SongLibrary.css';
+
+
 
 
 class SongLibrary extends Component {
@@ -42,11 +46,12 @@ class SongLibrary extends Component {
                     <SongItem
                         key={song.id}
                         song={song}
+                        toggle={this.togglePopUp}
                     />
                 )}
             </tbody>
         </table>
-        {/* {this.state.visible ? <PopUp toggle={this.togglePopUp} /> : null} */}
+        {this.state.visible ? <EditSongItem /> : null}
       </div>
     )
   }

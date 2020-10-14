@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import audioTrack from '../../Audio/FineMetronome.wav';
 import audioTrack2 from '../../Audio/MegaClap.wav';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+
 
 
 
@@ -63,6 +65,14 @@ class SongItem extends Component {
           });
     }
 
+    handleClick = () => {
+        this.props.dispatch({
+            type: 'DISPLAY_EDIT_WINDOW',
+            payload: this.state
+        });
+        this.props.toggle();
+    };
+
 
   render() {
       
@@ -78,9 +88,8 @@ class SongItem extends Component {
                     {this.props.song.beats}/4 
                 </td>
                 <td>
-                    <button
-                        onClick={this.togglePopUp}>
-                            Edit
+                    <button onClick={this.handleClick}>
+                        Edit
                     </button>
                 </td>
                 <td>
@@ -94,7 +103,7 @@ class SongItem extends Component {
                         onClick={this.handleStartStop}>
                         {this.state.playing ? 'Stop' : 'Start'}
                     </button>
-                </td>                            
+                </td>
             </tr>
     )
   }

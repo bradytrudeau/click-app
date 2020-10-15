@@ -78,6 +78,8 @@ class SongForm extends Component {
                                     labelId="beatSelectLabel"
                                     id="demo-simple-select"
                                     onChange={(event) => this.handleChangeFor('beats', event)}
+                                    defaultValue={4}
+                                    displayEmpty={true}
                                 >
                                     <MenuItem value={1}>1/4</MenuItem>
                                     <MenuItem value={2}>2/4</MenuItem>
@@ -92,6 +94,7 @@ class SongForm extends Component {
                                     <MenuItem value={11}>11/4</MenuItem>
                                     <MenuItem value={12}>12/4</MenuItem>
                                     <MenuItem value={13}>13/4</MenuItem>
+                                    
                                 </Select>
                         </FormControl>
                     <div className="addTrackBtn">

@@ -109,12 +109,18 @@ class SongItem extends Component {
                     {this.props.song.beats}/4 
                 </td>
                 <td>
-                    <Button onClick={this.handleClick} variant="contained" color="primary">
+                    <Button 
+                        onClick={this.handleClick} 
+                        variant="contained" 
+                        color="primary">
                             Edit
                     </Button>
                 </td>
                 <td>
-                    <Button onClick={this.openDelete} variant="contained" color="primary">
+                    <Button 
+                        onClick={this.openDelete} 
+                        variant="contained" 
+                        color="primary">
                             Delete
                     </Button>
                     <Dialog
@@ -122,26 +128,39 @@ class SongItem extends Component {
                         onClose={this.handleClose}
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
-                        >
-                        <DialogTitle id="alert-dialog-title">{"DELETE SONG?"}</DialogTitle>
+                        TransitionComponent={Slide}>
+                        <DialogTitle 
+                            id="alert-dialog-title">
+                                {"DELETE SONG?"}
+                        </DialogTitle>
                         <DialogContent>
-                            <DialogContentText id="alert-dialog-description">
-                            Are you sure you want to DELETE this track?
+                            <DialogContentText 
+                                id="alert-dialog-description">
+                                    Are you sure you want to DELETE this track?
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={this.handleClose} variant="contained" color="primary">
-                                No
+                            <Button 
+                                onClick={this.handleClose} 
+                                variant="contained" 
+                                color="primary">
+                                    No
                             </Button>
-                            <Button onClick={this.deleteSong} variant="contained" color="primary">
-                                Yes
+                            <Button 
+                                onClick={this.deleteSong} 
+                                variant="contained" 
+                                color="primary">
+                                    Yes
                             </Button>
                         </DialogActions>
                     </Dialog>
                 </td>
                 <td>
-                    <Button onClick={this.handleStartStop} variant="contained" color="primary">
-                        {this.state.playing ? 'Stop' : 'Start'} 
+                    <Button 
+                        onClick={this.handleStartStop} 
+                        variant="contained" 
+                        color="primary">
+                            {this.state.playing ? 'Stop' : 'Start'} 
                     </Button>
                 </td>
             </tr>

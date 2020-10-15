@@ -84,6 +84,8 @@ class EditSongItem extends Component {
                                 labelId="beatSelectLabel"
                                 id="demo-simple-select"
                                 onChange={(event) => this.handleChangeFor('beats', event)}
+                                defaultValue={4}
+                                displayEmpty={true}
                             >
                                 <MenuItem value={1}>1/4</MenuItem>
                                 <MenuItem value={2}>2/4</MenuItem>

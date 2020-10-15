@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import Button from '@material-ui/core/Button';
+import { TextField } from '@material-ui/core';
 
 class RegisterForm extends Component {
   state = {
@@ -89,6 +91,35 @@ class RegisterForm extends Component {
         </div>
         <div>
           <input className="btn" type="submit" name="submit" value="Register" />
+        </div>
+        <div>
+          <TextField 
+            label='Username'
+            type='text'
+            name='username'
+            value={this.state.username}  
+            fullWidth={true}  
+            onChange={this.handleInputChangeFor('username')} 
+            />
+          <TextField 
+            label='Password'
+            type='password'
+            name='password'
+            value={this.state.password}
+            fullWidth={true}    
+            onChange={this.handleInputChangeFor('password')} 
+          />
+        </div>
+        <div>
+          <div className="addTrackBtn">
+            <Button 
+              type="submit"
+              value="Register"
+              variant="contained" 
+              color="primary">
+                  Register
+            </Button>
+          </div>
         </div>
       </form>
     );

@@ -104,7 +104,7 @@ class App extends Component {
               exact
               path="/login"
               component={LoginPage}
-              authRedirect="/user"
+              authRedirect="/home"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -113,7 +113,7 @@ class App extends Component {
               exact
               path="/registration"
               component={RegisterPage}
-              authRedirect="/user"
+              authRedirect="/home"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -122,7 +122,7 @@ class App extends Component {
               exact
               path="/home"
               component={LandingPage}
-              authRedirect="/user"
+              authRedirect="/home"
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

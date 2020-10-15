@@ -24,10 +24,6 @@ import SongForm from '../SongForm/SongForm';
 import SongLibrary from '../SongLibrary/SongLibrary';
 import EditSongItem from '../EditSongItem/EditSongItem';
 
-
-
-
-
 import './App.css';
 
 class App extends Component {
@@ -122,7 +118,6 @@ class App extends Component {
               exact
               path="/home"
               component={LandingPage}
-              authRedirect="/home"
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

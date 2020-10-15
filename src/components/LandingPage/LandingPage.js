@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemText from '@material-ui/core/ListItemText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
+import metronome from '../../images/metronome.png';
+import add from '../../images/plus.png';
+import library from '../../images/library.png';
+
 
 import './LandingPage.css';
 
@@ -9,7 +21,19 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 
 class LandingPage extends Component {
   state = {
-    heading: 'Class Component',
+    loggedIn: true,
+  };
+
+  componentDidMount = () => {
+    this.onPageLoad();
+  }
+
+  onPageLoad = () => {
+    if (this.props.store.user.id != null) {
+      this.setState({
+        loggedIn: true
+      })
+    }
   };
 
   onLogin = (event) => {
@@ -18,23 +42,50 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h2>{this.state.heading}</h2>
+      <div>
+        <Dialog onClose={this.state.loggedIn === false} aria-labelledby="simple-dialog-title" open={this.state.loggedIn}>
+          <DialogTitle id="simple-dialog-title">Hello, {this.props.store.user.first_name}! Where would you like to navigate to?</DialogTitle>
+          <List>
 
-        <div className="grid">
-          <div className="grid-col grid-col_8">
-          </div>
-          <div className="grid-col grid-col_4">
-            <RegisterForm />
+            <ListItem button>
+              <ListItemAvatar>
+                <Avatar src={metronome}/>
+              </ListItemAvatar>
+              <ListItemText primary="Metronome"/>
+            </ListItem>
 
+            <ListItem button>
+              <ListItemAvatar>
+                <Avatar src={add}/>
+              </ListItemAvatar>
+              <ListItemText primary="Add a Song"/>
+            </ListItem>
+
+            <ListItem button>
+              <ListItemAvatar>
+                <Avatar src={library}/>
+              </ListItemAvatar>
+              <ListItemText primary="Song Library"/>
+            </ListItem>
+
+          </List>
+        </Dialog>
+        {this.state.loggedIn ? null :
+          <div>
+            <RegisterForm /> 
             <center>
-              <h4>Already a Member?</h4>
-              <button className="btn btn_sizeSm" onClick={this.onLogin}>
-                Login
-              </button>
+              <p>Already registered?</p>
+              <Button 
+                onClick={() => {
+                  this.props.history.push('/login');
+                }} 
+                variant="outlined" 
+                color="primary">
+                  Log In
+              </Button>
             </center>
           </div>
-        </div>
+        }
       </div>
     );
   }

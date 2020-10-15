@@ -42,57 +42,6 @@ class RegisterForm extends Component {
           </h3>
         )}
         <div>
-          <label htmlFor="username">
-            Username:
-            <input
-              type="text"
-              name="username"
-              value={this.state.username}
-              required
-              onChange={this.handleInputChangeFor('username')}
-            />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="password">
-            Password:
-            <input
-              type="password"
-              name="password"
-              value={this.state.password}
-              required
-              onChange={this.handleInputChangeFor('password')}
-            />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="first_name">
-            First Name:
-            <input
-              type="text"
-              name="first_name"
-              value={this.state.first_name}
-              required
-              onChange={this.handleInputChangeFor('first_name')}
-            />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="last_name">
-            Last Name:
-            <input
-              type="text"
-              name="last_name"
-              value={this.state.last_name}
-              required
-              onChange={this.handleInputChangeFor('last_name')}
-            />
-          </label>
-        </div>
-        <div>
-          <input className="btn" type="submit" name="submit" value="Register" />
-        </div>
-        <div>
           <TextField 
             label='Username'
             type='text'
@@ -108,6 +57,22 @@ class RegisterForm extends Component {
             value={this.state.password}
             fullWidth={true}    
             onChange={this.handleInputChangeFor('password')} 
+          />
+          <TextField 
+            label='First Name'
+            type='text'
+            name='first_name'
+            value={this.state.first_name}  
+            fullWidth={true}  
+            onChange={this.handleInputChangeFor('first_name')} 
+            />
+          <TextField 
+            label='Last Name'
+            type='text'
+            name='last_name'
+            value={this.state.last_name}
+            fullWidth={true}    
+            onChange={this.handleInputChangeFor('last_name')} 
           />
         </div>
         <div>

@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Dialog from '@material-ui/core/Dialog';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
 import metronome from '../../images/metronome.png';
-import add from '../../images/plus.png';
+import add from '../../images/add.png';
 import library from '../../images/library.png';
+
+
 
 
 import './LandingPage.css';
@@ -43,7 +44,71 @@ class LandingPage extends Component {
   render() {
     return (
       <div>
-        <Dialog onClose={this.state.loggedIn === false} aria-labelledby="simple-dialog-title" open={this.state.loggedIn}>
+        {/* <Grid container spacing={4}>
+          <Grid item xs={12}>
+            <Card> */}
+              <Grid container justify="center" spacing={3}>
+                <Grid item>
+                  <Card>
+                    <CardActionArea>
+                      <CardMedia
+                        image={metronome}
+                        title="Metronome"
+                        style={{ height: "150px" }}
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          Metronome
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                          A classic programmable metronome for keeping time on the fly!
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+                <Grid item>
+                  <Card>
+                    <CardActionArea>
+                      <CardMedia
+                        image={add}
+                        title="Metronome"
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          Metronome
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                          A classic programmable metronome for keeping time on the fly!
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+                <Grid item>
+                  <Card>
+                    <CardActionArea>
+                      <CardMedia
+                        image={library}
+                        title="Metronome"
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          Metronome
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                          A classic programmable metronome for keeping time on the fly!
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+              </Grid>
+            {/* </Card>
+          </Grid>
+        </Grid> */}
+        
+        {/* <Dialog onClose={this.state.loggedIn === false} aria-labelledby="simple-dialog-title" open={this.state.loggedIn}>
           <DialogTitle id="simple-dialog-title">Hello, {this.props.store.user.first_name}! Where would you like to navigate to?</DialogTitle>
           <List>
 
@@ -85,7 +150,7 @@ class LandingPage extends Component {
               </Button>
             </center>
           </div>
-        }
+        } */}
       </div>
     );
   }

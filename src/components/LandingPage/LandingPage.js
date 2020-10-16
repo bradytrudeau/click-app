@@ -44,113 +44,84 @@ class LandingPage extends Component {
   render() {
     return (
       <div>
-        {/* <Grid container spacing={4}>
-          <Grid item xs={12}>
-            <Card> */}
-              <Grid container justify="center" spacing={3}>
-                <Grid item>
-                  <Card>
-                    <CardActionArea>
-                      <CardMedia
-                        image={metronome}
-                        title="Metronome"
-                        style={{ height: "150px" }}
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          Metronome
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          A classic programmable metronome for keeping time on the fly!
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </Grid>
-                <Grid item>
-                  <Card>
-                    <CardActionArea>
-                      <CardMedia
-                        image={add}
-                        title="Metronome"
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          Metronome
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          A classic programmable metronome for keeping time on the fly!
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </Grid>
-                <Grid item>
-                  <Card>
-                    <CardActionArea>
-                      <CardMedia
-                        image={library}
-                        title="Metronome"
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          Metronome
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          A classic programmable metronome for keeping time on the fly!
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </Grid>
-              </Grid>
-            {/* </Card>
+        <center>
+          <h2>
+            Hello, {this.props.store.user.first_name}! Where would you like to navigate to?
+          </h2>
+        </center>
+        <Grid container justify="center" spacing={3}>
+          <Grid item>
+            <Card
+              style={{width: "275px", height: "325px"}}
+            >
+              <CardActionArea
+                onClick={() => this.props.history.push('/metronome')}
+              >
+                <CardMedia
+                  image={metronome}
+                  title="Metronome"
+                  style={{ height: "150px" }}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Metronome
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    A classic programmable metronome for keeping time on the fly!
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
           </Grid>
-        </Grid> */}
-        
-        {/* <Dialog onClose={this.state.loggedIn === false} aria-labelledby="simple-dialog-title" open={this.state.loggedIn}>
-          <DialogTitle id="simple-dialog-title">Hello, {this.props.store.user.first_name}! Where would you like to navigate to?</DialogTitle>
-          <List>
-
-            <ListItem button>
-              <ListItemAvatar>
-                <Avatar src={metronome}/>
-              </ListItemAvatar>
-              <ListItemText primary="Metronome"/>
-            </ListItem>
-
-            <ListItem button>
-              <ListItemAvatar>
-                <Avatar src={add}/>
-              </ListItemAvatar>
-              <ListItemText primary="Add a Song"/>
-            </ListItem>
-
-            <ListItem button>
-              <ListItemAvatar>
-                <Avatar src={library}/>
-              </ListItemAvatar>
-              <ListItemText primary="Song Library"/>
-            </ListItem>
-
-          </List>
-        </Dialog>
-        {this.state.loggedIn ? null :
-          <div>
-            <RegisterForm /> 
-            <center>
-              <p>Already registered?</p>
-              <Button 
-                onClick={() => {
-                  this.props.history.push('/login');
-                }} 
-                variant="outlined" 
-                color="primary">
-                  Log In
-              </Button>
-            </center>
-          </div>
-        } */}
+          <Grid item>
+            <Card
+              style={{width: "275px", height: "325px"}}
+            >
+              <CardActionArea
+                onClick={() => this.props.history.push('/songform')}
+              >
+                <CardMedia
+                  image={add}
+                  title="New Song"
+                  style={{ height: "150px" }}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    New Song
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    Add a new song tempo track to your song library for quick access to multiple tempo files
+                    on the go!
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item>
+            <Card
+              style={{width: "275px", height: "325px"}}
+            >
+              <CardActionArea
+                onClick={() => this.props.history.push('/songlibrary')}
+              >
+                <CardMedia
+                  image={library}
+                  title="Song Library"
+                  style={{ height: "150px" }}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Song Library
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    A library of song tempo tracks that you've already created! Click the
+                    'START' button next to each track to hear to each songs tempo track.
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        </Grid>
       </div>
     );
   }

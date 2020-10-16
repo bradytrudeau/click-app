@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
+
 
 class RegisterForm extends Component {
   state = {
@@ -91,4 +93,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(RegisterForm);
+export default connect(mapStoreToProps)(withRouter(RegisterForm));

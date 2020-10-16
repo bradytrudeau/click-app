@@ -5,6 +5,8 @@
 -- Otherwise you will have errors!
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
+    "first_name" VARCHAR (20) NOT NULL,
+    "last_name" VARCHAR (30) NOT NULL,
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
@@ -13,5 +15,6 @@ CREATE TABLE "track" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (80) UNIQUE NOT NULL,
     "bpm" INT NOT NULL,
-    "beats" INT NOT NULL
+    "beats" INT NOT NULL,
+    "user_id" INT REFERENCES "user"
 );

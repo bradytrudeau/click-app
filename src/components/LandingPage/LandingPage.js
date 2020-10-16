@@ -4,21 +4,13 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import metronome from '../../images/metronome.png';
 import add from '../../images/add.png';
 import library from '../../images/library.png';
-
-
-
-
 import './LandingPage.css';
-
-// CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
 
 class LandingPage extends Component {
   state = {
@@ -90,8 +82,7 @@ class LandingPage extends Component {
                     New Song
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    Add a new song tempo track to your song library for quick access to multiple tempo files
-                    on the go!
+                    Add a new song tempo track to your song library for quick access to multiple tempo files!
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -114,8 +105,7 @@ class LandingPage extends Component {
                     Song Library
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    A library of song tempo tracks that you've already created! Click the
-                    'START' button next to each track to hear to each songs tempo track.
+                    A library of song tempo tracks that you've already created! 
                   </Typography>
                 </CardContent>
               </CardActionArea>

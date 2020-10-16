@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { TextField, Select, FormControl, InputLabel, MenuItem, Modal } from '@material-ui/core';
+import { TextField, Select, FormControl, InputLabel, MenuItem } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import './EditSongItem.css';
 
@@ -14,7 +14,7 @@ class EditSongItem extends Component {
         newTrack: {
             name: this.props.store.edit.name,
             bpm: this.props.store.edit.bpm,
-            beats: '',
+            beats: this.props.store.edit.beats,
             id: this.props.store.edit.id,
         }
     }
@@ -45,6 +45,7 @@ class EditSongItem extends Component {
                 }
             });
             this.props.toggle();
+            this.props.setSongs();
     }
 
     handleCancel = () => {
@@ -56,7 +57,7 @@ class EditSongItem extends Component {
                 id: '',
                 }
             });
-            this.props.toggle();    
+            this.props.toggle();
         }
 
   render() {
@@ -84,7 +85,7 @@ class EditSongItem extends Component {
                                 labelId="beatSelectLabel"
                                 id="demo-simple-select"
                                 onChange={(event) => this.handleChangeFor('beats', event)}
-                                defaultValue={4}
+                                defaultValue={this.props.store.edit.beats}
                                 displayEmpty={true}
                             >
                                 <MenuItem value={1}>1/4</MenuItem>

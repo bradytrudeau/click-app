@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import audioTrack from '../../Audio/FineMetronome.wav';
 import audioTrack2 from '../../Audio/MegaClap.wav';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -11,6 +10,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+
 
 class SongItem extends Component {
     state = {
@@ -31,12 +31,13 @@ class SongItem extends Component {
         if (this.state.playing === true) {
             clearInterval(this.timer);
             this.setState({
-                playing: !this.state.playing
+                playing: !this.state.playing,
+                count: 0
             })
             console.log('Stopping track');
         }
         else {
-            this.timer = setInterval(this.playTrack, (60 / this.state.bpm) * 1000);
+            this.timer = setInterval(this.playTrack, (60 / this.props.song.bpm) * 1000);
             this.setState({
                 playing: !this.state.playing
             }, this.playTrack);
@@ -47,12 +48,13 @@ class SongItem extends Component {
     
     // Plays imported sound file
     playTrack = () => {
-        this.state.count++;
-        console.log('COUNT', this.state.count);
+        this.setState({
+            count: this.state.count + 1,
+        })
         if (this.state.count === 1) {
             this.state.track2.play();
         }
-        else if (this.state.count === this.state.beats + 1) {
+        else if (this.state.count === this.props.song.beats + 1) {
             this.setState({
                 count: 1
             })
@@ -96,6 +98,8 @@ class SongItem extends Component {
 
 
   render() {
+      console.log('NEWEST SONG LIST', this.props.song);
+      
       
     return (
             <tr>

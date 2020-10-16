@@ -4,11 +4,8 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import SongItem from '../SongItem/SongItem';
 import EditSongItem from '../EditSongItem/EditSongItem';
 import './SongLibrary.css';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 
@@ -16,13 +13,22 @@ import Slide from '@material-ui/core/Slide';
 
 class SongLibrary extends Component {
     state = {
-        visible: false
+        visible: false,
+        songs: []
     };
 
     componentDidMount() {
-        this.props.dispatch({
-          type: 'FETCH_SONGS'
-        });
+      this.setSongs();
+    }
+
+    setSongs = () => {
+      this.props.dispatch({
+        type: 'FETCH_SONGS'
+      });
+      // this.setState({
+      //   songs: this.props.store.songs
+      // });
+      setTimeout(() => {console.log('SONGS SET!', this.state.songs)}, 2000)
     }
 
     togglePopUp = () => {
@@ -48,7 +54,7 @@ class SongLibrary extends Component {
               </tr>
           </thead>
           <tbody>
-              {this.props.store.songs.map((song, i) => 
+          {this.props.store.songs.map((song, i) => 
                 <SongItem
                   key={song.id}
                   song={song}
@@ -67,30 +73,10 @@ class SongLibrary extends Component {
           <DialogContent>
             <EditSongItem 
               toggle={this.togglePopUp}
+              setSongs={this.setSongs}
             />
           </DialogContent>
         </Dialog>
-        {/* <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">{"DELETE SONG?"}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              Are you sure you want to DELETE this track?
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              No
-            </Button>
-            <Button onClick={handleClose} color="primary" autoFocus>
-              Yes
-            </Button>
-          </DialogActions>
-        </Dialog> */}
       </div>
     )
   }

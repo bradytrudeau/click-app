@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router-dom';
 import { TextField, Select, FormControl, InputLabel, MenuItem } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import mapStoreToProps from '../../redux/mapStoreToProps';
@@ -12,7 +11,7 @@ class SongForm extends Component {
         newTrack: {
             name: '',
             bpm: '',
-            beats: '',
+            beats: 4,
         }
     }
 
@@ -37,7 +36,7 @@ class SongForm extends Component {
             newTrack: {
                 name: '',
                 bpm: '',
-                beats: '',
+                beats: 4,
                 }
             });
     }
@@ -47,7 +46,7 @@ class SongForm extends Component {
             newTrack: {
                 name: '',
                 bpm: '',
-                beats: '',
+                beats: 4,
                 }
             });    
         }

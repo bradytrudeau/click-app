@@ -1,8 +1,21 @@
-.metronome {
+.metronome.true {
     padding-top: 40px;
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 30px;
+    background-color: #ffffff;
+    animation-name: click2;
+    animation-duration: 0.5s;
+}
+
+.metronome.false {
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 30px;
+    background-color: #ffffff;
+    animation-name: click;
+    animation-duration: 0.5s;
 }
 
 .metronomeInside {
@@ -27,3 +40,13 @@
 #demo-simple-select {
     margin-top: 10px;
 }
+
+@keyframes click {
+    from {background-color: #2296F3;}
+    to {background-color: #ffffff;}
+  }
+
+  @keyframes click2 {
+    from {background-color: #2296F3;}
+    to {background-color: #ffffff;}
+  }

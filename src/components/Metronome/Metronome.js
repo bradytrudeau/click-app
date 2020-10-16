@@ -23,7 +23,8 @@ class Metronome extends Component {
         track2: new Audio(audioTrack2),
         time: null,
         beats: 0,
-        count: 0
+        count: 0,
+        mode: true
     }
 
 
@@ -71,14 +72,16 @@ class Metronome extends Component {
     // different sound file to indicate start of measure
     playTrack = () => {
         this.setState({
-            count: this.state.count + 1
+            count: this.state.count + 1,
+            mode: !this.state.mode
         })
+
         if (this.state.count === 1 || this.state.count === 0) {
             this.state.track2.play();
         }
         else if (this.state.count === this.state.beats + 1) {
             this.setState({
-                count: 1
+                count: 1,
             })
             this.state.track2.play();
         }
@@ -112,7 +115,7 @@ class Metronome extends Component {
     return (
         <div className="metronomePage">
             <Container>
-                <Card className="metronome">
+                <Card className={`metronome ${this.state.mode}`}>
                     <Typography 
                         variant="h4" 
                         component="h2">
@@ -139,6 +142,8 @@ class Metronome extends Component {
                                         labelId="beatSelectLabel"
                                         id="demo-simple-select"
                                         onChange={this.handleBPMChange('beats')}
+                                        defaultValue={4}
+                                        displayEmpty={true}
                                     >
                                         <MenuItem value={1}>1/4</MenuItem>
                                         <MenuItem value={2}>2/4</MenuItem>
@@ -156,7 +161,8 @@ class Metronome extends Component {
                                     </Select>
                             </FormControl>
                         <div className="startBtn">
-                            <Button 
+                            <Button
+                                disabled={this.state.bpm === 0}
                                 variant='contained' 
                                 type="submit" 
                                 color='primary'

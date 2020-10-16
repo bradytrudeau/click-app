@@ -7,6 +7,12 @@ import audioTrack from '../../Audio/FineMetronome.wav';
 import audioTrack2 from '../../Audio/MegaClap.wav';
 import { TextField, Select, FormControl, InputLabel, MenuItem } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import Typography from '@material-ui/core/Typography';
+
 
 
 class Metronome extends Component {
@@ -104,52 +110,76 @@ class Metronome extends Component {
   render() {
       
     return (
-        <div className="metronome">
-            <h2>Metronome</h2>
-            <TextField 
-                label='BPM'
-                type='number'
-                value={this.state.bpm}
-                fullWidth={true}    
-                onChange={this.handleBPMChange('bpm')} 
-            />
-                <FormControl id="dropdown" fullWidth>
-                        <InputLabel id="beatSelectLabel">Time Signature</InputLabel>
-                        <Select
-                            labelId="beatSelectLabel"
-                            id="demo-simple-select"
-                            onChange={this.handleBPMChange('beats')}
-                        >
-                            <MenuItem value={1}>1/4</MenuItem>
-                            <MenuItem value={2}>2/4</MenuItem>
-                            <MenuItem value={3}>3/4</MenuItem>
-                            <MenuItem value={4}>4/4</MenuItem>
-                            <MenuItem value={5}>5/4</MenuItem>
-                            <MenuItem value={6}>6/4</MenuItem>
-                            <MenuItem value={7}>7/4</MenuItem>
-                            <MenuItem value={8}>8/4</MenuItem>
-                            <MenuItem value={9}>9/4</MenuItem>
-                            <MenuItem value={10}>10/4</MenuItem>
-                            <MenuItem value={11}>11/4</MenuItem>
-                            <MenuItem value={12}>12/4</MenuItem>
-                            <MenuItem value={13}>13/4</MenuItem>
-                        </Select>
-                </FormControl>
-            <div className="addTrackBtn">
-                <Button 
-                    variant='contained' 
-                    type="submit" 
-                    color='primary'
-                    onClick={this.handleStartStop}>
-                    {this.state.playing ? 'Stop' : 'Start'}
-                </Button>
-            </div>
-            <div className="cancelTrackBtn">
-                <Button variant='contained' onClick={this.tapTempo} color='primary'>Tap Tempo</Button>
-            </div>
-            <div className="cancelTrackBtn">
-                {this.state.playing ? <h2>{this.state.count}</h2> : null}
-            </div>
+        <div className="metronomePage">
+            <Container>
+                <Card className="metronome">
+                    <Typography 
+                        variant="h4" 
+                        component="h2">
+                            Metronome
+                    </Typography>
+                    <CardContent className="metronomeInside">
+                        <TextField
+                            id="bpmSelect" 
+                            label='BPM'
+                            type='number'
+                            value={this.state.bpm}
+                            fullWidth={true}    
+                            onChange={this.handleBPMChange('bpm')} 
+                        />
+                            <FormControl 
+                                id="dropdown"  
+                                fullWidth
+                            >
+                                    <InputLabel 
+                                        id="beatSelectLabel">
+                                            Time Signature
+                                    </InputLabel>
+                                    <Select
+                                        labelId="beatSelectLabel"
+                                        id="demo-simple-select"
+                                        onChange={this.handleBPMChange('beats')}
+                                    >
+                                        <MenuItem value={1}>1/4</MenuItem>
+                                        <MenuItem value={2}>2/4</MenuItem>
+                                        <MenuItem value={3}>3/4</MenuItem>
+                                        <MenuItem value={4}>4/4</MenuItem>
+                                        <MenuItem value={5}>5/4</MenuItem>
+                                        <MenuItem value={6}>6/4</MenuItem>
+                                        <MenuItem value={7}>7/4</MenuItem>
+                                        <MenuItem value={8}>8/4</MenuItem>
+                                        <MenuItem value={9}>9/4</MenuItem>
+                                        <MenuItem value={10}>10/4</MenuItem>
+                                        <MenuItem value={11}>11/4</MenuItem>
+                                        <MenuItem value={12}>12/4</MenuItem>
+                                        <MenuItem value={13}>13/4</MenuItem>
+                                    </Select>
+                            </FormControl>
+                        <div className="startBtn">
+                            <Button 
+                                variant='contained' 
+                                type="submit" 
+                                color='primary'
+                                onClick={this.handleStartStop}>
+                                {this.state.playing ? 'Stop' : 'Start'}
+                            </Button>
+                        </div>
+                        <div className="tapBtn">
+                            <Button 
+                                variant='contained' 
+                                onClick={this.tapTempo} 
+                                color='primary'>
+                                    Tap Tempo
+                            </Button>
+                        </div>
+                        <Typography 
+                            variant="h5" 
+                            component="h2">
+                                Count: {this.state.count}
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </Container>
         </div>
     )
   }

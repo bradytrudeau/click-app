@@ -1,0 +1,29 @@
+.metronome {
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 30px;
+}
+
+.metronomeInside {
+    margin-top: 20px;
+}
+
+.startBtn {
+    margin-top: 30px;
+    text-align: center;
+}
+  
+.tapBtn {
+    margin-top: 5px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#beatSelectLabel {
+    margin-top: 10px;
+}
+
+#demo-simple-select {
+    margin-top: 10px;
+}

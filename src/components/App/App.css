@@ -179,3 +179,45 @@ PopUp
   background-color: white;
   position: absolute;
 }
+
+/* --------------------------------------------------------------------------------
+Nav
+-------------------------------------------------------------------------------- */
+
+.nav-title {
+  font-size: 24px;
+  font-weight: 700;
+  display: inline-block;
+  color: #ffffff;
+  padding-left: 10px;
+}
+
+.nav {
+margin: 0 0 30px;
+background-color: #2296F3;
+overflow: hidden;
+}
+
+.nav-link {
+float: left;
+color: #ffffff;
+background-color: #2296F3;
+text-align: center;
+padding: 24px 10px;
+text-decoration: none;
+font-size: 15px;
+
+/* these last two make the logout button in
+the nav bar look like another link */
+border:none;
+cursor: pointer;
+outline:0;
+}
+
+.nav-link:hover {
+background-color: #3F51B5;
+}
+
+.nav-right {
+float: right;
+}

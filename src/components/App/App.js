@@ -5,16 +5,11 @@ import {
   Redirect,
   Switch,
   Link,
-  withRouter
 } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-
-import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import AboutPage from '../AboutPage/AboutPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -32,7 +27,6 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 
 import './App.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { text } from 'express';
 
 class App extends Component {
 
@@ -59,9 +53,11 @@ class App extends Component {
           )}
           </Router>
         </div>
-        {/* {!this.props.store.user.id && (
-          <h1>WELCOME TO THE CLICK APP!</h1>
-        )} */}
+        {!this.props.store.user.id && (
+          <div className="topArea">
+
+          </div>
+        )}
         <Router>
           {this.props.store.user.id && (
             <Route 

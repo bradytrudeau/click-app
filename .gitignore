@@ -66,3 +66,6 @@ typings/
 
 # ignore package-lock as it complicates merging
 package-lock.json
+
+# doodles js file
+doodles.js

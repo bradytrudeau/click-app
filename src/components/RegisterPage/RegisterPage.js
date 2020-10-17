@@ -14,7 +14,7 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="registrationPage">
         <RegisterForm />
 
         <center>

@@ -74,12 +74,12 @@ class LandingPage extends Component {
               >
                 <CardMedia
                   image={add}
-                  title="New Song"
+                  title="Add a Song"
                   style={{ height: "150px" }}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    New Song
+                    Add a Song
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Add a new song tempo track to your song library for quick access to multiple tempo files!

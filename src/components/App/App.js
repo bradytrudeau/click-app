@@ -41,23 +41,18 @@ class App extends Component {
       <div>
         <div className="nav-right">
           <Router>
-          {!this.props.store.user.id && (
-            <>
-              <Link className="nav-link" to="/login">Login / Register</Link>
-            </>
-          )}
-          {this.props.store.user.id && (
-            <>
-              <LogOutButton className="nav-link" />
-            </>
-          )}
+            {/* {!this.props.store.user.id && (
+              <>
+                <Link className="nav-link" to="/login">Login / Register</Link>
+              </>
+            )} */}
+            {this.props.store.user.id && (
+              <>
+                <LogOutButton className="nav-link" />
+              </>
+            )}
           </Router>
         </div>
-        {!this.props.store.user.id && (
-          <div className="topArea">
-
-          </div>
-        )}
         <Router>
           {this.props.store.user.id && (
             <Route 

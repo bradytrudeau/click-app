@@ -18,6 +18,18 @@ img {
   max-width: 100%;
 }
 
+@font-face {
+  font-family: 'MyWebFont';
+  src: url('../../fonts/QuickKissPersonalUse-PxlZ.ttf')
+}
+
+.appTitle {
+  text-align: center;
+  font-family: 'MyWebFont';
+  color: #000000;
+  font-size: 32pt;
+}
+
 /* --------------------------------------------------------------------------------
 Container
 -------------------------------------------------------------------------------- */
@@ -120,16 +132,30 @@ input {
   margin: auto;
 }
 
+.songForm {
+  margin: auto;
+  width: 500px;
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 30px;
+  background-color: #ffffff;
+}
+
+.songFormInside {
+  margin-top: 20px;
+}
+
 .addTrackBtn {
-  margin-top: 10px;
+  margin-top: 30px;
   text-align: center;
 }
 
 .cancelTrackBtn {
-  margin: 5px;
+  margin-top: 5px;
+  margin-bottom: 30px;
   text-align: center;
 }
-
 /* --------------------------------------------------------------------------------
 Table
 -------------------------------------------------------------------------------- */
@@ -145,8 +171,10 @@ table {
 th{
   border: 1px solid black;
   padding: 10px 10px 10px 10px;
-  background-color: rgb(139, 142, 146);
+  background-color: #6D8EA0;
   text-align: center;
+  color: #ffffff;
+  font-weight: normal;
 }
 
 td {
@@ -222,12 +250,18 @@ background-color: #3F51B5;
 float: right;
 }
 
+.tabArea {
+  margin: auto;
+  margin-bottom: 40px;
+  width: 1000px;
+}
+
 /* --------------------------------------------------------------------------------
 Login
 -------------------------------------------------------------------------------- */
 
 .loginPage {
-  margin-top: 125px;
+  margin-top: 75px;
 }
 
 /* --------------------------------------------------------------------------------
@@ -235,5 +269,5 @@ Registration
 -------------------------------------------------------------------------------- */
 
 .registrationPage {
-  margin-top: 125px;
+  margin-top: 75px;
 }

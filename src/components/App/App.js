@@ -39,7 +39,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="nav-right">
+        <div>
+          <h1 className="appTitle">CLICK!</h1>
+        </div>
+        <span className="nav-right">
           <Router>
             {/* {!this.props.store.user.id && (
               <>
@@ -52,81 +55,81 @@ class App extends Component {
               </>
             )}
           </Router>
-        </div>
-        <Router>
-          {this.props.store.user.id && (
-            <Route 
-              render={(history) => (
-              <Paper>
-                <Tabs
-                  value={history.location.pathname}
-                  indicatorColor="primary"
-                  textColor="primary"
-                  centered
-                >
-                  <Tab 
-                    label="Home"
-                    value="/home"
-                    component={Link}
-                    to="/home"
-                  />
-                  <Tab 
-                    label="Metronome"
-                    value="/metronome"
-                    component={Link}
-                    to="/metronome"
-                  />
-                  <Tab 
-                    label="Add a Song"
-                    value="/songform"
-                    component={Link}
-                    to="/songform"
-                  />
-                  <Tab 
-                    label="Song Library"
-                    value="/songlibrary"
-                    component={Link}
-                    to="/songlibrary"
-                  />
-                </Tabs>
-              </Paper>
+        </span>
+          <Router>
+            {this.props.store.user.id && (
+              <Route 
+                render={(history) => (
+                  <div className="tabArea">
+                    <Tabs
+                      value={history.location.pathname}
+                      indicatorColor="primary"
+                      textColor="primary"
+                      centered
+                    >
+                      <Tab 
+                        label="Home"
+                        value="/home"
+                        component={Link}
+                        to="/home"
+                      />
+                      <Tab 
+                        label="Metronome"
+                        value="/metronome"
+                        component={Link}
+                        to="/metronome"
+                      />
+                      <Tab 
+                        label="Add a Song"
+                        value="/songform"
+                        component={Link}
+                        to="/songform"
+                      />
+                      <Tab 
+                        label="Song Library"
+                        value="/songlibrary"
+                        component={Link}
+                        to="/songlibrary"
+                      />
+                    </Tabs>
+                  </div>
+                )}
+                />
               )}
+            <Switch>
+              <Redirect exact from="/" to="/home" />
+              <ProtectedRoute 
+                path="/metronome" 
+                component={Metronome}
               />
-            )}
-          <Switch>
-            <Redirect exact from="/" to="/home" />
-            <ProtectedRoute 
-              path="/metronome" 
-              component={Metronome}
-            />
-            <ProtectedRoute 
-              path="/songform" 
-              component={SongForm}
-            />
-            <ProtectedRoute 
-              path="/songlibrary" 
-              component={SongLibrary}
-            />
-            <ProtectedRoute
-              exact
-              path="/login"
-              component={LoginPage}
-              authRedirect="/home"
-            />  
-            <ProtectedRoute
-              exact
-              path="/registration"
-              component={RegisterPage}
-              authRedirect="/home"
-            />
-            <ProtectedRoute
-              exact
-              path="/home"
-              component={LandingPage}
-            />
-            <Route render={() => <h1>404</h1>} />
-          </Switch>
-        </Router>
+              <ProtectedRoute 
+                path="/songform" 
+                component={SongForm}
+              />
+              <ProtectedRoute 
+                path="/songlibrary" 
+                component={SongLibrary}
+              />
+              <ProtectedRoute
+                exact
+                path="/login"
+                component={LoginPage}
+                authRedirect="/home"
+              />  
+              <ProtectedRoute
+                exact
+                path="/registration"
+                component={RegisterPage}
+                authRedirect="/home"
+              />
+              <ProtectedRoute
+                exact
+                path="/home"
+                component={LandingPage}
+              />
+              <Route render={() => <h1>404</h1>} />
+            </Switch>
+          </Router>
         <Footer/>
       </div>
     );

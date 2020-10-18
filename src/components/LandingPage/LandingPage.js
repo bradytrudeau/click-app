@@ -44,7 +44,7 @@ class LandingPage extends Component {
         <Grid container justify="center" spacing={3}>
           <Grid item>
             <Card
-              style={{width: "275px", height: "325px"}}
+              style={{width: "275px"}}
             >
               <CardActionArea
                 onClick={() => this.props.history.push('/metronome')}
@@ -67,22 +67,22 @@ class LandingPage extends Component {
           </Grid>
           <Grid item>
             <Card
-              style={{width: "275px", height: "325px"}}
+              style={{width: "275px"}}
             >
               <CardActionArea
                 onClick={() => this.props.history.push('/songform')}
               >
                 <CardMedia
                   image={add}
-                  title="New Song"
+                  title="Add a Song"
                   style={{ height: "150px" }}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    New Song
+                    Add a Song
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    Add a new song tempo track to your song library for quick access to multiple tempo files!
+                    Add a new tempo track to your song library to recall at any time!
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -90,7 +90,7 @@ class LandingPage extends Component {
           </Grid>
           <Grid item>
             <Card
-              style={{width: "275px", height: "325px"}}
+              style={{width: "275px"}}
             >
               <CardActionArea
                 onClick={() => this.props.history.push('/songlibrary')}

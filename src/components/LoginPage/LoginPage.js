@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 class LoginPage extends Component {
   render() {
     return (
-      <div>
+      <div className="loginPage">
         <LoginForm />
 
         <center>

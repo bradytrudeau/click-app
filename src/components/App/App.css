@@ -171,7 +171,7 @@ table {
 th{
   border: 1px solid black;
   padding: 10px 10px 10px 10px;
-  background-color: #6D8EA0;
+  background-color: #424242;
   text-align: center;
   color: #ffffff;
   font-weight: normal;
@@ -270,4 +270,17 @@ Registration
 
 .registrationPage {
   margin-top: 75px;
+}
+
+/* --------------------------------------------------------------------------------
+Home
+-------------------------------------------------------------------------------- */
+
+.cards {
+  background-color: #424242;
+  color: #ffffff;
+}
+
+.introBlurb {
+  margin-bottom: 20px;
 }

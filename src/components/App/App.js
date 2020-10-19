@@ -25,6 +25,7 @@ import Paper from '@material-ui/core/Paper';
 import LogOutButton from '../LogOutButton/LogOutButton';
 
 
+
 import './App.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
@@ -64,7 +65,7 @@ class App extends Component {
                     <Tabs
                       value={history.location.pathname}
                       indicatorColor="primary"
-                      textColor="primary"
+                      textColor="primary.light"
                       centered
                     >
                       <Tab 

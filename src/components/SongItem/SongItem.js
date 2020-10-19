@@ -51,7 +51,7 @@ class SongItem extends Component {
         this.setState({
             count: this.state.count + 1,
         })
-        if (this.state.count === 1) {
+        if (this.state.count === 1 || this.state.count === 0) {
             this.state.track2.play();
         }
         else if (this.state.count === this.props.song.beats + 1) {

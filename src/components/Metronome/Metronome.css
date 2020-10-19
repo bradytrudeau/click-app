@@ -42,11 +42,11 @@
 }
 
 @keyframes click {
-    from {background-color: #2296F3;}
+    from {background-color: #4497F3;}
     to {background-color: #ffffff;}
   }
 
   @keyframes click2 {
-    from {background-color: #2296F3;}
+    from {background-color: #4497F3;}
     to {background-color: #ffffff;}
   }

@@ -36,10 +36,12 @@ class LandingPage extends Component {
   render() {
     return (
       <div>
-        <center>
-          <h2>
-            Hello, {this.props.store.user.first_name}! Where would you like to navigate to?
-          </h2>
+        <center className="introBlurb">
+          <Typography 
+            variant="h4" 
+            component="h2">
+              Hello, {this.props.store.user.first_name}! Welcome to CLICK!
+          </Typography>
         </center>
         <Grid container justify="center" spacing={3}>
           <Grid item>
@@ -54,11 +56,11 @@ class LandingPage extends Component {
                   title="Metronome"
                   style={{ height: "150px" }}
                 />
-                <CardContent>
+                <CardContent className="cards">
                   <Typography gutterBottom variant="h5" component="h2">
                     Metronome
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                  <Typography variant="body2" component="p">
                     A classic programmable metronome for keeping time on the fly!
                   </Typography>
                 </CardContent>
@@ -77,11 +79,11 @@ class LandingPage extends Component {
                   title="Add a Song"
                   style={{ height: "150px" }}
                 />
-                <CardContent>
+                <CardContent className="cards">
                   <Typography gutterBottom variant="h5" component="h2">
                     Add a Song
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                  <Typography variant="body2" component="p">
                     Add a new tempo track to your song library to recall at any time!
                   </Typography>
                 </CardContent>
@@ -100,11 +102,11 @@ class LandingPage extends Component {
                   title="Song Library"
                   style={{ height: "150px" }}
                 />
-                <CardContent>
+                <CardContent className="cards">
                   <Typography gutterBottom variant="h5" component="h2">
                     Song Library
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                  <Typography variant="body2" component="p">
                     A library of song tempo tracks that you've already created! 
                   </Typography>
                 </CardContent>

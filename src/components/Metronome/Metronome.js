@@ -62,7 +62,6 @@ class Metronome extends Component {
             }, this.playTrack);
             console.log('Starting track');
             console.log('STATE', this.state);
-            
         }
        }
     

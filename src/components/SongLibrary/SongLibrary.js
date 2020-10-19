@@ -8,6 +8,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import Typography from '@material-ui/core/Typography';
 
 
 
@@ -41,7 +42,13 @@ class SongLibrary extends Component {
       
     return (
       <div>
-        <h2>Song Library</h2>
+        <center className="introBlurb">
+          <Typography 
+            variant="h4" 
+            component="h2">
+              Song Library
+          </Typography>
+        </center>
         <table>
           <thead>
               <tr>

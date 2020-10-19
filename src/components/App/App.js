@@ -10,18 +10,13 @@ import {
 import { connect } from 'react-redux';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import AboutPage from '../AboutPage/AboutPage';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Metronome from '../Metronome/Metronome';
 import SongForm from '../SongForm/SongForm';
 import SongLibrary from '../SongLibrary/SongLibrary';
-import EditSongItem from '../EditSongItem/EditSongItem';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Paper from '@material-ui/core/Paper';
+import { Tabs, Tab } from '@material-ui/core';
 import LogOutButton from '../LogOutButton/LogOutButton';
 
 
@@ -73,24 +68,28 @@ class App extends Component {
                         value="/home"
                         component={Link}
                         to="/home"
+                        className="tabs"
                       />
                       <Tab 
                         label="Metronome"
                         value="/metronome"
                         component={Link}
                         to="/metronome"
+                        className="tabs"
                       />
                       <Tab 
                         label="Add a Song"
                         value="/songform"
                         component={Link}
                         to="/songform"
+                        className="tabs"
                       />
                       <Tab 
                         label="Song Library"
                         value="/songlibrary"
                         component={Link}
                         to="/songlibrary"
+                        className="tabs"
                       />
                     </Tabs>
                   </div>

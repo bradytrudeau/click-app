@@ -8,6 +8,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import { lightBlue, blue, blueGrey} from '@material-ui/core/colors';
 
 
+
 import rootReducer from './redux/reducers/_root.reducer'; // imports ./redux/reducers/index.js
 import rootSaga from './redux/sagas/_root.saga'; // imports ./redux/sagas/index.js
 
@@ -26,7 +27,7 @@ const middlewareList = process.env.NODE_ENV === 'development' ?
     palette: {
       primary: blue,
       secondary: blueGrey,
-    }
+    },
   });
 
 const store = createStore(

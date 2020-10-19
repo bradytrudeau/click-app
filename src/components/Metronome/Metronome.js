@@ -3,8 +3,17 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './Metronome.css';
 // import audioTrack from '../../Audio/Fineshrine.m4a';
-import audioTrack from '../../Audio/FineMetronome.wav';
-import audioTrack2 from '../../Audio/MegaClap.wav';
+import audioTrack from '../../Audio/Blip.wav';
+import audioTrack2 from '../../Audio/Clap.wav';
+import audioTrack3 from '../../Audio/Clave.wav';
+import audioTrack4 from '../../Audio/Cowbell.wav';
+import audioTrack5 from '../../Audio/Logic1.wav';
+import audioTrack6 from '../../Audio/Logic2.wav';
+import audioTrack7 from '../../Audio/Stick.WAV';
+import audioTrack8 from '../../Audio/Stick2.wav';
+import audioTrack9 from '../../Audio/Tick_High.wav';
+import audioTrack10 from '../../Audio/Tick_Low.wav';
+import audioTrack11 from '../../Audio/Triangle.wav';
 import { TextField, Select, FormControl, InputLabel, MenuItem } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -42,6 +51,13 @@ class Metronome extends Component {
                 [propertyName]: event.target.value
             })
         }
+    }
+
+    handleSoundChange = (propertyName) => (event) => {
+        this.setState({
+            [propertyName]: new Audio(event.target.value)
+        })
+
     }
 
     handleStartStop = () => {
@@ -121,6 +137,7 @@ class Metronome extends Component {
                     </Typography>
                     <CardContent className="metronomeInside">
                         <TextField
+                            disabled={this.state.playing}
                             id="bpmSelect" 
                             label='BPM'
                             type='number'
@@ -137,6 +154,7 @@ class Metronome extends Component {
                                             Time Signature
                                     </InputLabel>
                                     <Select
+                                        disabled={this.state.playing}
                                         labelId="beatSelectLabel"
                                         id="demo-simple-select"
                                         onChange={this.handleBPMChange('beats')}
@@ -156,6 +174,64 @@ class Metronome extends Component {
                                         <MenuItem value={11}>11/4</MenuItem>
                                         <MenuItem value={12}>12/4</MenuItem>
                                         <MenuItem value={13}>13/4</MenuItem>
+                                    </Select>
+                            </FormControl>
+                            <FormControl 
+                                id="dropdown"  
+                                fullWidth
+                            >
+                                    <InputLabel 
+                                        id="beatSelectLabel">
+                                            Accent Beat Sound
+                                    </InputLabel>
+                                    <Select
+                                        disabled={this.state.playing}
+                                        labelId="beatSelectLabel"
+                                        id="demo-simple-select"
+                                        onChange={this.handleSoundChange('track2')}
+                                        defaultValue={audioTrack2}
+                                        displayEmpty={true}
+                                    >
+                                        <MenuItem value={audioTrack}>Blip</MenuItem>
+                                        <MenuItem value={audioTrack2}>Clap</MenuItem>
+                                        <MenuItem value={audioTrack3}>Clave</MenuItem>
+                                        <MenuItem value={audioTrack4}>Cowbell</MenuItem>
+                                        <MenuItem value={audioTrack5}>Logic Pro 1</MenuItem>
+                                        <MenuItem value={audioTrack6}>Logic Pro 2</MenuItem>
+                                        <MenuItem value={audioTrack7}>Stick Click 1</MenuItem>
+                                        <MenuItem value={audioTrack8}>Stick Click 2</MenuItem>
+                                        <MenuItem value={audioTrack9}>Tick - High</MenuItem>
+                                        <MenuItem value={audioTrack10}>Tick - Low</MenuItem>
+                                        <MenuItem value={audioTrack11}>Triangle</MenuItem>
+                                    </Select>
+                            </FormControl>
+                            <FormControl 
+                                id="dropdown"  
+                                fullWidth
+                            >
+                                    <InputLabel 
+                                        id="beatSelectLabel">
+                                            Regular Beat Sound
+                                    </InputLabel>
+                                    <Select
+                                        disabled={this.state.playing}
+                                        labelId="beatSelectLabel"
+                                        id="demo-simple-select"
+                                        onChange={this.handleSoundChange('track')}
+                                        defaultValue={audioTrack}
+                                        displayEmpty={true}
+                                    >
+                                        <MenuItem value={audioTrack}>Blip</MenuItem>
+                                        <MenuItem value={audioTrack2}>Clap</MenuItem>
+                                        <MenuItem value={audioTrack3}>Clave</MenuItem>
+                                        <MenuItem value={audioTrack4}>Cowbell</MenuItem>
+                                        <MenuItem value={audioTrack5}>Logic Pro 1</MenuItem>
+                                        <MenuItem value={audioTrack6}>Logic Pro 2</MenuItem>
+                                        <MenuItem value={audioTrack7}>Stick Click 1</MenuItem>
+                                        <MenuItem value={audioTrack8}>Stick Click 2</MenuItem>
+                                        <MenuItem value={audioTrack9}>Tick - High</MenuItem>
+                                        <MenuItem value={audioTrack10}>Tick - Low</MenuItem>
+                                        <MenuItem value={audioTrack11}>Triangle</MenuItem>
                                     </Select>
                             </FormControl>
                         <div className="startBtn">

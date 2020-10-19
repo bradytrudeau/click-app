@@ -140,6 +140,8 @@ input {
   padding-right: 40px;
   padding-bottom: 30px;
   background-color: #ffffff;
+  animation-name: click;
+  animation-duration: 0.5s;
 }
 
 .songFormInside {
@@ -155,6 +157,11 @@ input {
   margin-top: 5px;
   margin-bottom: 30px;
   text-align: center;
+}
+
+@keyframes formAnimation {
+  from {background-color: #4497F3;}
+  to {background-color: #ffffff;}
 }
 /* --------------------------------------------------------------------------------
 Table
@@ -250,10 +257,21 @@ background-color: #3F51B5;
 float: right;
 }
 
+.nav-right:hover {
+  float: right;
+  background-color: #4497F3;
+  color: #ffffff;
+  }
+
 .tabArea {
   margin: auto;
   margin-bottom: 40px;
   width: 1000px;
+}
+
+.tabs:hover {
+  background-color: #4497F3;
+  color: #ffffff;
 }
 
 /* --------------------------------------------------------------------------------
@@ -279,6 +297,11 @@ Home
 .cards {
   background-color: #424242;
   color: #ffffff;
+}
+
+.cards:hover {
+  background-color: lightgray;
+  color: #000000;
 }
 
 .introBlurb {

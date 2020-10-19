@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import audioTrack from '../../Audio/FineMetronome.wav';
-import audioTrack2 from '../../Audio/MegaClap.wav';
+import audioTrack from '../../Audio/Cowbell.wav';
+import audioTrack2 from '../../Audio/Clap.wav';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';

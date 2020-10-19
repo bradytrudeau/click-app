@@ -9,7 +9,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('/songs GET route');
     console.log('is authenticated?', req.isAuthenticated());
     console.log('user', req.user);
-    const queryText = `SELECT * FROM "track" WHERE "user_id" = $1;`; 
+    const queryText = `SELECT * FROM "track" WHERE "user_id" = $1 ORDER BY "id" ASC;`; 
     const queryParams = [req.user.id];
     pool.query(queryText, queryParams)
         .then((result) => {

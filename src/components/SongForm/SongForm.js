@@ -17,6 +17,8 @@ class SongForm extends Component {
             name: '',
             bpm: '',
             beats: 4,
+            track: 'Stick',
+            track2: 'Cowbell'
         }
     }
 
@@ -42,6 +44,8 @@ class SongForm extends Component {
                 name: '',
                 bpm: '',
                 beats: 4,
+                track: '',
+                track2: ''
                 }
             });
     }
@@ -107,6 +111,58 @@ class SongForm extends Component {
                                                 
                                             </Select>
                                     </FormControl>
+                                    <FormControl 
+                                        id="dropdown"  
+                                        fullWidth
+                                    >
+                                    <InputLabel 
+                                        id="beatSelectLabel">
+                                            Accent Beat Sound
+                                    </InputLabel>
+                                    <Select
+                                        disabled={this.state.playing}
+                                        labelId="beatSelectLabel"
+                                        id="demo-simple-select"
+                                        onChange={(event) => this.handleChangeFor('track2', event)}
+                                        defaultValue="Cowbell"
+                                        displayEmpty={true}
+                                    >
+                                        <MenuItem value="Blip">Blip</MenuItem>
+                                        <MenuItem value="Clap">Clap</MenuItem>
+                                        <MenuItem value="Clave">Clave</MenuItem>
+                                        <MenuItem value="Cowbell">Cowbell</MenuItem>
+                                        <MenuItem value="Logic">Logic Pro</MenuItem>
+                                        <MenuItem value="Stick">Stick Click</MenuItem>
+                                        <MenuItem value="Tick">Tick</MenuItem>
+                                        <MenuItem value="Triangle">Triangle</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <FormControl 
+                                    id="dropdown"  
+                                    fullWidth
+                                >
+                                        <InputLabel 
+                                            id="beatSelectLabel">
+                                                Regular Beat Sound
+                                        </InputLabel>
+                                        <Select
+                                            disabled={this.state.playing}
+                                            labelId="beatSelectLabel"
+                                            id="demo-simple-select"
+                                            onChange={(event) => this.handleChangeFor('track', event)}
+                                            defaultValue="Stick"
+                                            displayEmpty={true}
+                                        >
+                                            <MenuItem value="Blip">Blip</MenuItem>
+                                            <MenuItem value="Clap">Clap</MenuItem>
+                                            <MenuItem value="Clave">Clave</MenuItem>
+                                            <MenuItem value="Cowbell">Cowbell</MenuItem>
+                                            <MenuItem value="Logic">Logic Pro</MenuItem>
+                                            <MenuItem value="Stick">Stick Click</MenuItem>
+                                            <MenuItem value="Tick">Tick</MenuItem>
+                                            <MenuItem value="Triangle">Triangle</MenuItem>
+                                        </Select>
+                                </FormControl>
                                 <div className="addTrackBtn">
                                     <Button variant='contained' type="submit" color='primary'>Add a New Track</Button>
                                 </div>

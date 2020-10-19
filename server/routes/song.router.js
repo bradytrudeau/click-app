@@ -30,10 +30,10 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('user', req.user);
 
     const queryString = `
-        INSERT INTO "track" ("name", "bpm", "beats", "user_id")
-        VALUES ($1, $2, $3, $4);
+        INSERT INTO "track" ("name", "bpm", "beats", "accent", "regular", "user_id")
+        VALUES ($1, $2, $3, $4, $5, $6);
     `;
-    pool.query(queryString, [req.body.name, req.body.bpm, req.body.beats, req.user.id])
+    pool.query(queryString, [req.body.name, req.body.bpm, req.body.beats, req.body.track2, req.body.track, req.user.id])
         .then((results) => {
             res.sendStatus(201);
         })

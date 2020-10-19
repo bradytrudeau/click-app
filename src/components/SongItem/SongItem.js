@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import audioTrack from '../../Audio/Cowbell.wav';
-import audioTrack2 from '../../Audio/Clap.wav';
+import Blip from '../../Audio/Blip.wav';
+import Clap from '../../Audio/Clap.wav';
+import Clave from '../../Audio/Clave.wav';
+import Cowbell from '../../Audio/Cowbell.wav';
+import Logic from '../../Audio/Logic1.wav';
+import Stick from '../../Audio/Stick.WAV';
+import Tick from '../../Audio/Tick_High.wav';
+import Triangle from '../../Audio/Triangle.wav';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -18,11 +24,102 @@ class SongItem extends Component {
         name: this.props.song.name,
         bpm: this.props.song.bpm,
         id: this.props.song.id,
-        track: new Audio(audioTrack),
-        track2: new Audio(audioTrack2),
+        track: this.props.song.regular,
+        track2: this.props.song.accent,
         beats: this.props.song.beats,
         count: 0,
         deleting: false
+    }
+
+    componentDidMount = () => {
+        this.regularConditional();
+        this.accentConditional();
+    }
+
+    regularConditional = () => {
+        if(this.props.song.regular === "Blip") {
+            this.setState({
+                track: new Audio(Blip)
+            });
+        }
+        else if (this.props.song.regular === "Clap") {
+            this.setState({
+                track: new Audio(Clap)
+            });
+        }
+        else if (this.props.song.regular === "Clave") {
+            this.setState({
+                track: new Audio(Clave)
+            });
+        }
+        else if (this.props.song.regular === "Cowbell") {
+            this.setState({
+                track: new Audio(Cowbell)
+            });
+        }
+        else if (this.props.song.regular === "Logic") {
+            this.setState({
+                track: new Audio(Logic)
+            });
+        }
+        else if (this.props.song.regular === "Stick") {
+            this.setState({
+                track: new Audio(Stick)
+            });
+        }
+        else if (this.props.song.regular === "Tick") {
+            this.setState({
+                track: new Audio(Tick)
+            });
+        }
+        else if (this.props.song.regular === "Triangle") {
+            this.setState({
+                track: new Audio(Triangle)
+            });
+        }
+    }
+
+    accentConditional = () => {
+        if(this.props.song.accent === "Cowbell") {
+            this.setState({
+                track2: new Audio(Cowbell)
+            });
+        }
+        else if (this.props.song.regular === "Clap") {
+            this.setState({
+                track2: new Audio(Clap)
+            });
+        }
+        else if (this.props.song.regular === "Clave") {
+            this.setState({
+                track2: new Audio(Clave)
+            });
+        }
+        else if (this.props.song.regular === "Cowbell") {
+            this.setState({
+                track2: new Audio(Cowbell)
+            });
+        }
+        else if (this.props.song.regular === "Logic") {
+            this.setState({
+                track2: new Audio(Logic)
+            });
+        }
+        else if (this.props.song.regular === "Stick") {
+            this.setState({
+                track2: new Audio(Stick)
+            });
+        }
+        else if (this.props.song.regular === "Tick") {
+            this.setState({
+                track2: new Audio(Tick)
+            });
+        }
+        else if (this.props.song.regular === "Triangle") {
+            this.setState({
+                track2: new Audio(Triangle)
+            });
+        }
     }
 
     handleStartStop = () => {
@@ -48,6 +145,8 @@ class SongItem extends Component {
     
     // Plays imported sound file
     playTrack = () => {
+        console.log('THIS STATE', this.state);
+        
         this.setState({
             count: this.state.count + 1,
         })

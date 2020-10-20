@@ -16,114 +16,78 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import EditSongItem from '../EditSongItem/EditSongItem';
+
 
 
 class SongItem extends Component {
     state = {
-        playing: false,
-        name: this.props.song.name,
-        bpm: this.props.song.bpm,
-        id: this.props.song.id,
-        regular: this.props.song.regular,
-        accent: this.props.song.accent,
-        track: this.props.song.regular,
-        track2: this.props.song.accent,
-        beats: this.props.song.beats,
         count: 0,
-        deleting: false
+        playing: false,
+        deleting: false,
+        visible: false
     }
 
-    componentDidMount = () => {
-        this.regularConditional();
-        this.accentConditional();
-        setTimeout(() => {console.log('ITEMS SET!', this.state)}, 5000)      
-        
+    regularSound = (regularSoundToBePlayed) => {
+        let regularAudio;
+        switch(regularSoundToBePlayed) {
+            case "Blip":
+                regularAudio = new Audio(Blip);
+                return regularAudio;
+            case "Clap":
+                regularAudio = new Audio(Clap);
+                return regularAudio;
+            case "Clave":
+                regularAudio = new Audio(Clave);
+                return regularAudio;
+            case "Cowbell":
+                regularAudio = new Audio(Cowbell);
+                return regularAudio;
+            case "Logic":
+                regularAudio = new Audio(Logic);
+                return regularAudio;
+            case "Stick":
+                regularAudio = new Audio(Stick);
+                return regularAudio;
+            case "Tick":
+                regularAudio = new Audio(Tick);
+                return regularAudio;
+            case "Triangle":
+                regularAudio = new Audio(Triangle);
+                return regularAudio;
+        }
+        return regularAudio;
     }
 
-    regularConditional = () => {
-        if(this.props.song.regular === "Blip") {
-            this.setState({
-                track: new Audio(Blip)
-            });
+    accentSound = (accentSoundToBePlayed) => {
+        let accentAudio;
+        switch(accentSoundToBePlayed) {
+            case "Blip":
+                accentAudio = new Audio(Blip);
+                return accentAudio;
+            case "Clap":
+                accentAudio = new Audio(Clap);
+                return accentAudio;
+            case "Clave":
+                accentAudio = new Audio(Clave);
+                return accentAudio;
+            case "Cowbell":
+                accentAudio = new Audio(Cowbell);
+                return accentAudio;
+            case "Logic":
+                accentAudio = new Audio(Logic);
+                return accentAudio;
+            case "Stick":
+                accentAudio = new Audio(Stick);
+                return accentAudio;
+            case "Tick":
+                accentAudio = new Audio(Tick);
+                return accentAudio;
+            case "Triangle":
+                accentAudio = new Audio(Triangle);
+                return accentAudio;
         }
-        else if (this.props.song.regular === "Clap") {
-            this.setState({
-                track: new Audio(Clap)
-            });
-        }
-        else if (this.props.song.regular === "Clave") {
-            this.setState({
-                track: new Audio(Clave)
-            });
-        }
-        else if (this.props.song.regular === "Cowbell") {
-            this.setState({
-                track: new Audio(Cowbell)
-            });
-        }
-        else if (this.props.song.regular === "Logic") {
-            this.setState({
-                track: new Audio(Logic)
-            });
-        }
-        else if (this.props.song.regular === "Stick") {
-            this.setState({
-                track: new Audio(Stick)
-            });
-        }
-        else if (this.props.song.regular === "Tick") {
-            this.setState({
-                track: new Audio(Tick)
-            });
-        }
-        else if (this.props.song.regular === "Triangle") {
-            this.setState({
-                track: new Audio(Triangle)
-            });
-        }
-    }
-
-    accentConditional = () => {
-        if(this.props.song.accent === "Cowbell") {
-            this.setState({
-                track2: new Audio(Cowbell)
-            });
-        }
-        else if (this.props.song.accent === "Clap") {
-            this.setState({
-                track2: new Audio(Clap)
-            });
-        }
-        else if (this.props.song.accent === "Clave") {
-            this.setState({
-                track2: new Audio(Clave)
-            });
-        }
-        else if (this.props.song.accent === "Cowbell") {
-            this.setState({
-                track2: new Audio(Cowbell)
-            });
-        }
-        else if (this.props.song.accent === "Logic") {
-            this.setState({
-                track2: new Audio(Logic)
-            });
-        }
-        else if (this.props.song.accent === "Stick") {
-            this.setState({
-                track2: new Audio(Stick)
-            });
-        }
-        else if (this.props.song.accent === "Tick") {
-            this.setState({
-                track2: new Audio(Tick)
-            });
-        }
-        else if (this.props.song.accent === "Triangle") {
-            this.setState({
-                track2: new Audio(Triangle)
-            });
-        }
+        return accentAudio;
     }
 
     handleStartStop = () => {
@@ -149,22 +113,21 @@ class SongItem extends Component {
     
     // Plays imported sound file
     playTrack = () => {
-        console.log('THIS STATE', this.state);
-        
+
         this.setState({
             count: this.state.count + 1,
         })
         if (this.state.count === 1 || this.state.count === 0) {
-            this.state.track2.play();
+            this.accentSound(this.props.song.accent).play();
         }
         else if (this.state.count === this.props.song.beats + 1) {
             this.setState({
                 count: 1
             })
-            this.state.track2.play();
+            this.accentSound(this.props.song.accent).play();   
         }
         else{
-            this.state.track.play();
+            this.regularSound(this.props.song.regular).play();
         }     
     }
 
@@ -179,12 +142,12 @@ class SongItem extends Component {
         })
     }
 
-    handleClick = () => {
+    onClickEdit = () => {
         this.props.dispatch({
-            type: 'DISPLAY_EDIT_WINDOW',
-            payload: this.state
+            type: 'SET_SONG_TO_EDIT',
+            payload: this.props.song
         });
-        this.props.toggle();
+        this.toggleEditPopUp();
     };
 
     openDelete = () => {
@@ -193,12 +156,17 @@ class SongItem extends Component {
         })
     };
 
-    handleClose = () => {
+    closeDelete = () => {
         this.setState({
             deleting: false
         })
     };
-
+    
+    toggleEditPopUp = () => {
+        this.setState({
+         visible: !this.state.visible
+        });
+    };
 
   render() {
       console.log('NEWEST SONG LIST', this.props.song);
@@ -222,15 +190,31 @@ class SongItem extends Component {
                     {this.props.song.regular}
                 </td>
                 <td>
-                    <Button 
-                        onClick={this.handleClick} 
+                    <Button
+                        disabled={this.state.playing}
+                        onClick={this.onClickEdit} 
                         variant="contained" 
                         color="primary">
                             Edit
                     </Button>
+                    <Dialog 
+                        open={this.state.visible} 
+                        onClose={this.toggleEditPopUp} 
+                        aria-labelledby="form-dialog-title"
+                        TransitionComponent={Slide}
+                    >
+                        <DialogTitle id="form-dialog-title">Edit Track</DialogTitle>
+                        <DialogContent>
+                            <EditSongItem 
+                                toggleEdit={this.toggleEditPopUp}
+                                setSongs={this.props.setSongs}
+                            />
+                        </DialogContent>
+                    </Dialog>
                 </td>
                 <td>
-                    <Button 
+                    <Button
+                        disabled={this.state.playing}
                         onClick={this.openDelete} 
                         variant="contained" 
                         color="primary">
@@ -238,7 +222,7 @@ class SongItem extends Component {
                     </Button>
                     <Dialog
                         open={this.state.deleting}
-                        onClose={this.handleClose}
+                        onClose={this.closeDelete}
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                         TransitionComponent={Slide}>
@@ -253,7 +237,7 @@ class SongItem extends Component {
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button 
+                            <Button
                                 onClick={this.handleClose} 
                                 variant="contained" 
                                 color="primary">

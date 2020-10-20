@@ -33,7 +33,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         INSERT INTO "track" ("name", "bpm", "beats", "accent", "regular", "user_id")
         VALUES ($1, $2, $3, $4, $5, $6);
     `;
-    pool.query(queryString, [req.body.name, req.body.bpm, req.body.beats, req.body.track2, req.body.track, req.user.id])
+    pool.query(queryString, [req.body.name, req.body.bpm, req.body.beats, req.body.accent, req.body.regular, req.user.id])
         .then((results) => {
             res.sendStatus(201);
         })

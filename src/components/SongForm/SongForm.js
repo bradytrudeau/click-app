@@ -17,8 +17,8 @@ class SongForm extends Component {
             name: '',
             bpm: '',
             beats: 4,
-            track: 'Stick',
-            track2: 'Cowbell'
+            regular: 'Stick',
+            accent: 'Cowbell'
         }
     }
 
@@ -44,8 +44,8 @@ class SongForm extends Component {
                 name: '',
                 bpm: '',
                 beats: 4,
-                track: '',
-                track2: ''
+                regular: '',
+                accent: ''
                 }
             });
     }
@@ -56,6 +56,8 @@ class SongForm extends Component {
                 name: '',
                 bpm: '',
                 beats: 4,
+                regular: '',
+                accent: ''
                 }
             });    
         }
@@ -123,7 +125,7 @@ class SongForm extends Component {
                                         disabled={this.state.playing}
                                         labelId="beatSelectLabel"
                                         id="demo-simple-select"
-                                        onChange={(event) => this.handleChangeFor('track2', event)}
+                                        onChange={(event) => this.handleChangeFor('accent', event)}
                                         defaultValue="Cowbell"
                                         displayEmpty={true}
                                     >
@@ -149,7 +151,7 @@ class SongForm extends Component {
                                             disabled={this.state.playing}
                                             labelId="beatSelectLabel"
                                             id="demo-simple-select"
-                                            onChange={(event) => this.handleChangeFor('track', event)}
+                                            onChange={(event) => this.handleChangeFor('regular', event)}
                                             defaultValue="Stick"
                                             displayEmpty={true}
                                         >

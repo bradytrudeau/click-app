@@ -24,8 +24,8 @@ class Metronome extends Component {
     state = {
         playing: false,
         bpm: 0,
-        track: new Audio(audioTrack),
-        track2: new Audio(audioTrack2),
+        regular: new Audio(audioTrack),
+        accent: new Audio(audioTrack2),
         time: null,
         beats: 4,
         count: 0,
@@ -50,6 +50,7 @@ class Metronome extends Component {
         }
     }
 
+    // Get sound set in input for the sound values
     handleSoundChange = (propertyName) => (event) => {
         this.setState({
             [propertyName]: new Audio(event.target.value)
@@ -57,9 +58,9 @@ class Metronome extends Component {
 
     }
 
+    // If the track isn't playing, change status to playing
+    // And run the function that plays the audio
     handleStartStop = () => {
-        // If the track isn't playing, change status to playing
-        // And run the function that plays the audio
         if (this.state.playing === true) {
             clearInterval(this.timer);
             this.setState({
@@ -88,16 +89,16 @@ class Metronome extends Component {
         })
 
         if (this.state.count === 1 || this.state.count === 0) {
-            this.state.track2.play();
+            this.state.accent.play();
         }
         else if (this.state.count === this.state.beats + 1) {
             this.setState({
                 count: 1,
             })
-            this.state.track2.play();
+            this.state.accent.play();
         }
         else{
-            this.state.track.play();
+            this.state.regular.play();
         }    
     }
 
@@ -185,7 +186,7 @@ class Metronome extends Component {
                                         disabled={this.state.playing}
                                         labelId="beatSelectLabel"
                                         id="demo-simple-select"
-                                        onChange={this.handleSoundChange('track2')}
+                                        onChange={this.handleSoundChange('accent')}
                                         defaultValue={audioTrack2}
                                         displayEmpty={true}
                                     >
@@ -211,7 +212,7 @@ class Metronome extends Component {
                                         disabled={this.state.playing}
                                         labelId="beatSelectLabel"
                                         id="demo-simple-select"
-                                        onChange={this.handleSoundChange('track')}
+                                        onChange={this.handleSoundChange('regular')}
                                         defaultValue={audioTrack}
                                         displayEmpty={true}
                                     >

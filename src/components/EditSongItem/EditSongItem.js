@@ -9,87 +9,46 @@ import './EditSongItem.css';
 
 class EditSongItem extends Component {
 
-    // newTrack is the Track created by adding info to the input fields
-    state = {
-        newTrack: {
-            name: this.props.store.edit.name,
-            bpm: this.props.store.edit.bpm,
-            beats: this.props.store.edit.beats,
-            regular: this.props.store.edit.regular,
-            accent: this.props.store.edit.accent,
-            track: this.props.store.edit.track,
-            track2: this.props.store.edit.track2,
-            id: this.props.store.edit.id,
-        }
-    }
-
-    // captures the input values in the state
+    // captures the input values in the reduxState
     handleChangeFor = (property, event) => {
         console.log('event happened')
-        this.setState({
-            newTrack: {
-                ...this.state.newTrack,
-                [property]: event.target.value,
+        this.props.dispatch({
+            type: 'UPDATE_SONG_TO_EDIT',
+            payload: {
+            [property]: event.target.value
             }
-        });
+        })
     }
 
     // submits the values captured via sagas and resets input fields to default values
-    editTrack = (event) => {
+    updateTrack = (event) => {
         event.preventDefault();
         this.props.dispatch({ 
             type: 'EDIT_SONG', 
-            payload: this.state.newTrack })
-        this.setState({
-            newTrack: {
-                name: '',
-                bpm: '',
-                beats: '',
-                regular: '',
-                accent: '',
-                track: '',
-                track2: '',
-                id: '',
-                }
-            });
-            this.props.toggle();
-            this.props.setSongs();
-            console.log('This.State.NEWTRACK', this.state.newTrack);
-            
+            payload: this.props.store.edit})
+            this.props.toggleEdit();            
     }
 
     handleCancel = () => {
-        this.setState({
-            newTrack: {
-                name: '',
-                bpm: '',
-                beats: '',
-                regular: '',
-                accent: '',
-                track: '',
-                track2: '',
-                id: '',
-                }
-            });
-            this.props.toggle();
+            this.props.toggleEdit();
         }
 
   render() {
       
     return (
         <div>
-            <form className="newSongForm" onSubmit={this.editTrack}>
+            <form className="newSongForm" onSubmit={this.updateTrack}>
                 <TextField 
                     label='Track Name'
                     type='text'
-                    value={this.state.newTrack.name}
+                    value={this.props.store.edit.name}
                     fullWidth={true}
                     onChange={(event) => this.handleChangeFor('name', event)} 
                 />
                 <TextField 
                     label='BPM'
                     type='number'
-                    value={this.state.newTrack.bpm}
+                    value={this.props.store.edit.bpm}
                     fullWidth={true}
                     onChange={(event) => this.handleChangeFor('bpm', event)} 
                 />
@@ -126,7 +85,6 @@ class EditSongItem extends Component {
                             Accent Beat Sound
                     </InputLabel>
                     <Select
-                        disabled={this.state.playing}
                         labelId="beatSelectLabel"
                         id="demo-simple-select"
                         onChange={(event) => this.handleChangeFor('accent', event)}
@@ -152,7 +110,6 @@ class EditSongItem extends Component {
                             Regular Beat Sound
                     </InputLabel>
                     <Select
-                        disabled={this.state.playing}
                         labelId="beatSelectLabel"
                         id="demo-simple-select"
                         onChange={(event) => this.handleChangeFor('regular', event)}

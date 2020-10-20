@@ -5,8 +5,6 @@ import SongItem from '../SongItem/SongItem';
 import './SongLibrary.css';
 import Typography from '@material-ui/core/Typography';
 
-
-
 class SongLibrary extends Component {
 
     componentDidMount() {

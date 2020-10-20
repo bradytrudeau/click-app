@@ -16,6 +16,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import EditSongItem from '../EditSongItem/EditSongItem';
+
 
 
 class SongItem extends Component {
@@ -30,7 +32,7 @@ class SongItem extends Component {
         track2: this.props.song.accent,
         beats: this.props.song.beats,
         count: 0,
-        deleting: false
+        deleting: false,
     }
 
     componentDidMount = () => {

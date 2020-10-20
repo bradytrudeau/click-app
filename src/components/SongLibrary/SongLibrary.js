@@ -10,8 +10,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import Typography from '@material-ui/core/Typography';
 
-
-
 class SongLibrary extends Component {
     state = {
         visible: false,

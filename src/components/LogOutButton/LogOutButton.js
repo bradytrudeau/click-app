@@ -6,7 +6,8 @@ import Tab from '@material-ui/core/Tab';
 const LogOutButton = (props) => (
   <Tabs
     indicatorColor="primary"
-    textColor="primary.light"
+    textColor="secondary"
+    value={false}
   >
     <Tab
       label="Log Out"

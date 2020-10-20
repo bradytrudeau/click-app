@@ -61,8 +61,8 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 // PUT route for editing track info in users profile
 router.put('/:id', rejectUnauthenticated, (req, res) => {
     console.log('EDITING song with id of', req.body.id);
-    const queryString = 'UPDATE "track" SET ("name", "bpm", "beats") = ($1, $2, $3) WHERE "id" = $4;'
-    pool.query(queryString, [req.body.name, req.body.bpm, req.body.beats, req.body.id])
+    const queryString = 'UPDATE "track" SET ("name", "bpm", "beats", "accent", "regular") = ($1, $2, $3, $4, $5) WHERE "id" = $6;'
+    pool.query(queryString, [req.body.name, req.body.bpm, req.body.beats, req.body.accent, req.body.regular, req.body.id])
         .then(response => {
             console.log("Updated!");
             res.sendStatus(200);

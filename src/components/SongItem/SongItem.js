@@ -24,6 +24,8 @@ class SongItem extends Component {
         name: this.props.song.name,
         bpm: this.props.song.bpm,
         id: this.props.song.id,
+        regular: this.props.song.regular,
+        accent: this.props.song.accent,
         track: this.props.song.regular,
         track2: this.props.song.accent,
         beats: this.props.song.beats,
@@ -34,6 +36,8 @@ class SongItem extends Component {
     componentDidMount = () => {
         this.regularConditional();
         this.accentConditional();
+        setTimeout(() => {console.log('ITEMS SET!', this.state)}, 5000)      
+        
     }
 
     regularConditional = () => {
@@ -85,37 +89,37 @@ class SongItem extends Component {
                 track2: new Audio(Cowbell)
             });
         }
-        else if (this.props.song.regular === "Clap") {
+        else if (this.props.song.accent === "Clap") {
             this.setState({
                 track2: new Audio(Clap)
             });
         }
-        else if (this.props.song.regular === "Clave") {
+        else if (this.props.song.accent === "Clave") {
             this.setState({
                 track2: new Audio(Clave)
             });
         }
-        else if (this.props.song.regular === "Cowbell") {
+        else if (this.props.song.accent === "Cowbell") {
             this.setState({
                 track2: new Audio(Cowbell)
             });
         }
-        else if (this.props.song.regular === "Logic") {
+        else if (this.props.song.accent === "Logic") {
             this.setState({
                 track2: new Audio(Logic)
             });
         }
-        else if (this.props.song.regular === "Stick") {
+        else if (this.props.song.accent === "Stick") {
             this.setState({
                 track2: new Audio(Stick)
             });
         }
-        else if (this.props.song.regular === "Tick") {
+        else if (this.props.song.accent === "Tick") {
             this.setState({
                 track2: new Audio(Tick)
             });
         }
-        else if (this.props.song.regular === "Triangle") {
+        else if (this.props.song.accent === "Triangle") {
             this.setState({
                 track2: new Audio(Triangle)
             });
@@ -210,6 +214,12 @@ class SongItem extends Component {
                 </td>
                 <td>
                     {this.props.song.beats}/4 
+                </td>
+                <td>
+                    {this.props.song.accent}
+                </td>
+                <td>
+                    {this.props.song.regular}
                 </td>
                 <td>
                     <Button 

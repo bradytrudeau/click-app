@@ -40,11 +40,6 @@ class App extends Component {
         </div>
         <span className="nav-right">
           <Router>
-            {/* {!this.props.store.user.id && (
-              <>
-                <Link className="nav-link" to="/login">Login / Register</Link>
-              </>
-            )} */}
             {this.props.store.user.id && (
               <>
                 <LogOutButton className="nav-link" />
@@ -60,7 +55,7 @@ class App extends Component {
                     <Tabs
                       value={history.location.pathname}
                       indicatorColor="primary"
-                      textColor="primary.light"
+                      textColor="secondary"
                       centered
                     >
                       <Tab 

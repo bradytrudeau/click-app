@@ -13,7 +13,7 @@ As a guy who has spent the majority of his life playing music, a good metronome 
 4. Adjustable bpm, time signature, accent tone (the '1' of each measure), and regular tone. 
 5. Tap Tempo button to 'tap' out the tempo of your song
 
-![demo](./clickapp.mov)
+![demo](./click.gif)
 
 ### Prerequisites
 

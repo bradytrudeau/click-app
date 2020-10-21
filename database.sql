@@ -16,5 +16,7 @@ CREATE TABLE "track" (
     "name" VARCHAR (80) UNIQUE NOT NULL,
     "bpm" INT NOT NULL,
     "beats" INT NOT NULL,
+    "accent" VARCHAR (80) NOT NULL,
+    "regular" VARCHAR (80) NOT NULL,
     "user_id" INT REFERENCES "user"
 );

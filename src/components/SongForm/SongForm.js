@@ -17,8 +17,8 @@ class SongForm extends Component {
             name: '',
             bpm: '',
             beats: 4,
-            regular: 'Stick',
-            accent: 'Cowbell'
+            regular: '',
+            accent: ''
         }
     }
 
@@ -126,8 +126,9 @@ class SongForm extends Component {
                                         labelId="beatSelectLabel"
                                         id="demo-simple-select"
                                         onChange={(event) => this.handleChangeFor('accent', event)}
-                                        defaultValue="Cowbell"
+                                        defaultValue={this.state.newTrack.accent}
                                         displayEmpty={true}
+                                        value={this.state.newTrack.accent}
                                     >
                                         <MenuItem value="Blip">Blip</MenuItem>
                                         <MenuItem value="Clap">Clap</MenuItem>
@@ -152,8 +153,9 @@ class SongForm extends Component {
                                             labelId="beatSelectLabel"
                                             id="demo-simple-select"
                                             onChange={(event) => this.handleChangeFor('regular', event)}
-                                            defaultValue="Stick"
+                                            defaultValue={this.state.newTrack.regular}
                                             displayEmpty={true}
+                                            value={this.state.newTrack.regular}
                                         >
                                             <MenuItem value="Blip">Blip</MenuItem>
                                             <MenuItem value="Clap">Clap</MenuItem>
